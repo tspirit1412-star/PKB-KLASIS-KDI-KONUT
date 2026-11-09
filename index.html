@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portal PKB Klasis Kendari-Konawe Utara</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--surface:#fff;--text:#0f172a;--muted:#64748b;--navy:#0f2547;--navy2:#1e3a6e;--em:#10b981;--em2:#059669;--line:#e2e8f0;--hero1:#0f2547;--hero2:#1e3a6e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1220;--surface:#111b2e;--text:#e8edf5;--muted:#94a3b8;--line:#22304a;--navy:#cfe0ff;--navy2:#9db8ee;--hero1:#0a1a36;--hero2:#16315f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1220;--surface:#111b2e;--text:#e8edf5;--muted:#94a3b8;--line:#22304a;--navy:#cfe0ff;--navy2:#9db8ee;--hero1:#0a1a36;--hero2:#16315f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Roboto,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--navy)}
+.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--navy2),var(--em));display:grid;place-items:center;color:#fff;font-style:normal;font-size:13px}
+nav a{padding:8px 14px;border-radius:8px;font-weight:500;font-size:14px;color:var(--muted);transition:.2s}
+nav a:hover,nav a.on{color:var(--em2);background:rgba(16,185,129,.1)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:40px;height:40px;color:var(--text);font-size:18px;cursor:pointer}
+@media(max-width:720px){.burger{display:block}nav{display:none;position:absolute;top:62px;left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 20px;flex-direction:column}nav.open{display:flex}}
+.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:80px 0 90px}
+.hero h1{font-size:clamp(30px,5vw,50px);line-height:1.15;margin:12px 0;font-weight:800;max-width:700px}
+.hero p{max-width:560px;color:#cbd5e1;font-size:17px}
+.tag{display:inline-block;background:rgba(16,185,129,.18);color:#6ee7b7;padding:4px 12px;border-radius:99px;font-size:13px;font-weight:600}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;font-size:15px;border:0;cursor:pointer;transition:.2s;font-family:inherit}
+.btn-p{background:var(--em);color:#04281c}.btn-p:hover{background:#34d399;transform:translateY(-2px)}
+.btn-o{border:1px solid rgba(255,255,255,.35);color:#fff;margin-left:8px}.btn-o:hover{background:rgba(255,255,255,.1)}
+.sec{padding:56px 0}
+h2{font-size:28px;margin:0 0 6px;color:var(--navy)}
+.sub{color:var(--muted);margin:0 0 28px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,37,71,.12);border-color:var(--em)}
+.ic{width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,.12);display:grid;place-items:center;font-size:22px;margin-bottom:12px}
+.card h3{margin:0 0 6px;font-size:17px;color:var(--navy)}.card p{margin:0;color:var(--muted);font-size:14px}
+.stats{margin-top:-46px;position:relative}
+.stat{text-align:center}.stat b{display:block;font-size:34px;color:var(--em2);font-weight:800}.stat span{font-size:13px;color:var(--muted)}
+.bars .r{display:flex;align-items:center;gap:10px;margin:9px 0;font-size:13px}
+.bars .n{width:130px;color:var(--muted);flex:none}
+.bars .t{flex:1;background:var(--line);border-radius:99px;height:12px;overflow:hidden}
+.bars .f{height:100%;width:0;background:linear-gradient(90deg,var(--navy2),var(--em));border-radius:99px;transition:width 1s ease}
+.bars .v{width:36px;text-align:right;font-weight:600}
+.cta{background:linear-gradient(135deg,var(--navy2),var(--em2));color:#fff;border-radius:20px;padding:40px;text-align:center}
+.cta h2{color:#fff}
+.page{display:none}.page.on{display:block;animation:fi .4s ease}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.ph{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:46px 0}.ph h1{margin:0;font-size:32px}.ph p{margin:6px 0 0;color:#cbd5e1}
+.tl{border-left:3px solid var(--em);margin-left:8px;padding-left:20px}
+.tl .it{margin-bottom:20px;position:relative}.tl .it:before{content:"";position:absolute;left:-28px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--em)}
+.tl small{color:var(--em2);font-weight:600}
+.tw{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase}
+tr:hover td{background:rgba(16,185,129,.06)}
+input,textarea,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;margin-bottom:12px}
+input:focus,textarea:focus{outline:2px solid var(--em);border-color:transparent}
+.two{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.note{background:rgba(16,185,129,.1);border:1px dashed var(--em);border-radius:12px;padding:14px 16px;font-size:14px;margin-bottom:20px}
+.ok{display:none;color:var(--em2);font-weight:600}
+.gal{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}.gi{border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:pointer;transition:.25s}.gi:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(15,37,71,.15)}.gi img,.gi .ph2{width:100%;aspect-ratio:4/3;object-fit:cover;display:grid;place-items:center;font-size:44px;background:linear-gradient(135deg,var(--navy2),var(--em));color:#fff}.gi div.c{padding:10px 14px;font-size:14px}.gi small{color:var(--muted);display:block}.lb{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.85);place-items:center;padding:20px}.lb.on{display:grid}.lb img{max-width:100%;max-height:85vh;border-radius:10px}.x{background:none;border:0;color:#ef4444;cursor:pointer;font-size:16px}
+footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px;font-size:14px}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#beranda"><i>PKB</i><span>PKB Klasis Kendari-Konawe Utara</span></a>
+<button class="burger" id="bg" aria-label="Menu">☰</button>
+<nav id="nv"><a href="#beranda">Beranda</a><a href="#kegiatan">Kegiatan</a><a href="#galeri">Galeri</a><a href="#dashboard">Dashboard</a><a href="#tentang">Tentang &amp; Kontak</a></nav>
+</div></header>
+
+<main>
+<section class="page" id="p-beranda">
+<div class="hero"><div class="wrap">
+<span class="tag">Persekutuan Kaum Bapak</span>
+<h1>Bersekutu, melayani, dan bertumbuh bersama di Sulawesi Tenggara</h1>
+<p>Portal resmi PKB Klasis Kendari-Konawe Utara: data anggota, kegiatan pelayanan, dan kemitraan yang transparan.</p>
+<div style="margin-top:26px"><a class="btn btn-p" href="#kegiatan">Lihat Kegiatan</a><a class="btn btn-o" href="#tentang">Hubungi Kami</a></div>
+</div></div>
+<div class="wrap stats"><div class="grid" id="hs"></div></div>
+<div class="wrap sec">
+<h2>Fokus Pelayanan</h2><p class="sub">Empat pilar yang menjadi arah kerja PKB.</p>
+<div class="grid">
+<div class="card"><div class="ic">🙏</div><h3>Kerohanian</h3><p>Ibadah, pendalaman Alkitab, dan retret kaum bapak.</p></div>
+<div class="card"><div class="ic">🤝</div><h3>Sosial &amp; Diakonia</h3><p>Bantuan bagi keluarga yang membutuhkan dan aksi kemanusiaan.</p></div>
+<div class="card"><div class="ic">🌱</div><h3>Ekonomi Jemaat</h3><p>Pelatihan usaha, pertanian, dan jejaring kemitraan.</p></div>
+<div class="card"><div class="ic">📊</div><h3>Data &amp; Organisasi</h3><p>Pendataan anggota yang rapi dan terbuka untuk pemangku kepentingan.</p></div>
+</div></div>
+<div class="wrap sec" style="padding-top:0"><div class="two">
+<div class="card"><h3>Sebaran Anggota per Ranting</h3><div class="bars" id="bars" style="margin-top:12px"></div></div>
+<div class="cta" style="display:flex;flex-direction:column;justify-content:center"><h2>Mari Berkolaborasi</h2><p>Pemerintah daerah, mitra usaha, dan masyarakat umum dipersilakan menjalin kerja sama.</p><div><a class="btn btn-p" href="#tentang">Kirim Pesan</a></div></div>
+</div></div>
+</section>
+
+<section class="page" id="p-kegiatan">
+<div class="ph"><div class="wrap"><h1>Kegiatan &amp; Layanan</h1><p>Rekam jejak program PKB (contoh data).</p></div></div>
+<div class="wrap sec"><div class="grid" id="kg"></div>
+<h2 style="margin-top:44px">Linimasa Kegiatan</h2><p class="sub">Beberapa kegiatan terbaru.</p>
+<div class="tl" id="tl"></div></div>
+</section>
+
+<section class="page" id="p-galeri">
+<div class="ph"><div class="wrap"><h1>Galeri Kegiatan</h1><p>Dokumentasi foto pelayanan PKB.</p></div></div>
+<div class="wrap sec">
+<div class="card" id="up" style="display:none;margin-bottom:22px"><h3>Unggah Foto (pengurus)</h3><input type="file" id="gf" accept="image/*"><input id="gc" placeholder="Keterangan kegiatan"><input id="gd" placeholder="Tanggal, mis. Agustus 2026"><button class="btn btn-p" id="gu">Unggah</button> <span class="ok" id="ok3"></span></div>
+<div class="gal" id="gl"></div></div>
+<div class="lb" id="lb"><img id="li" alt=""></div>
+</section>
+
+<section class="page" id="p-dashboard">
+<div class="ph"><div class="wrap"><h1>Dashboard Anggota</h1><p>Pratinjau data. Fitur lengkap menyusul di tahap berikutnya.</p></div></div>
+<div class="wrap sec">
+<div class="note" id="auth">Memeriksa status masuk...</div>
+<div class="two">
+<div><input id="q" placeholder="Cari nama atau ranting..."><div class="tw"><table><thead><tr><th>Nama</th><th>Ranting</th><th>Bidang</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
+<div class="card"><h3>Form Anggota Baru</h3>
+<input id="fn" placeholder="Nama lengkap"><select id="fr"></select><input id="fb" placeholder="Bidang pelayanan">
+<button class="btn btn-p" id="add">Tambah ke Tabel</button><p class="ok" id="ok1">Data ditambahkan (hanya di tampilan ini).</p></div>
+</div></div>
+</section>
+
+<section class="page" id="p-tentang">
+<div class="ph"><div class="wrap"><h1>Tentang &amp; Kontak</h1><p>Profil, visi-misi, dan form pesan.</p></div></div>
+<div class="wrap sec"><div class="two">
+<div>
+<h2>Profil</h2><p>Persekutuan Kaum Bapak (PKB) Klasis Kendari-Konawe Utara adalah wadah pelayanan kaum bapak di lingkungan klasis, yang bergerak di bidang kerohanian, sosial, dan pemberdayaan jemaat.</p>
+<h3 style="color:var(--navy)">Visi</h3><p>Kaum bapak yang beriman, mandiri, dan menjadi berkat bagi keluarga, gereja, dan masyarakat.</p>
+<h3 style="color:var(--navy)">Misi</h3><ul style="color:var(--muted);padding-left:20px"><li>Memperkuat kehidupan rohani anggota.</li><li>Menggerakkan pelayanan sosial yang nyata.</li><li>Mengembangkan ekonomi dan keterampilan jemaat.</li><li>Mengelola data dan organisasi secara transparan.</li></ul>
+</div>
+<div class="card"><h3>Kirim Pesan / Pengaduan</h3>
+<input id="mn" placeholder="Nama"><input id="me" type="email" placeholder="Email atau nomor HP"><select id="mt"><option>Pesan umum</option><option>Pengaduan</option><option>Kerja sama</option></select><textarea id="mm" rows="4" placeholder="Tulis pesan Anda"></textarea>
+<button class="btn btn-p" id="sd">Kirim</button><p class="ok" id="ok2">Terima kasih, pesan Anda tercatat (demo).</p>
+<p style="font-size:13px;color:var(--muted)">Alamat: Kendari, Sulawesi Tenggara (ubah sesuai sekretariat).</p></div>
+</div></div>
+</section>
+</main>
+<footer>© 2026 PKB Klasis Kendari-Konawe Utara · Data pada situs ini adalah contoh</footer>
+
+<script>
+var R=[["Kendari Kota",142],["Mandonga",118],["Kadia",96],["Wua-Wua",88],["Konawe Utara",124],["Asera",64],["Wiwirano",52]];
+var M=[["Yohanis Lalang","Kendari Kota","Kerohanian","Aktif"],["Markus Tiranda","Mandonga","Sosial","Aktif"],["Daud Rante","Kadia","Ekonomi","Aktif"],["Petrus Maku","Konawe Utara","Organisasi","Aktif"],["Samuel Bunga","Asera","Kerohanian","Aktif"],["Yusuf Sampe","Wua-Wua","Sosial","Nonaktif"],["Elias Padang","Wiwirano","Ekonomi","Aktif"],["Andarias Tondok","Mandonga","Organisasi","Aktif"]];
+var K=[["🙏","Ibadah Bulanan","Ibadah bersama seluruh ranting setiap bulan.","12"],["📖","Pendalaman Alkitab","Kelompok kecil rutin tiap pekan.","48"],["🏕️","Retret Kaum Bapak","Pembinaan rohani dan kebersamaan.","2"],["🎁","Aksi Diakonia","Bantuan sembako dan kunjungan keluarga.","9"],["🌾","Pelatihan Usaha Tani","Kerja sama dengan penyuluh pertanian.","4"],["🤲","Bakti Sosial","Gotong royong dan pelayanan masyarakat.","6"]];
+var T=[["Agustus 2026","Retret Kaum Bapak Klasis","Dihadiri perwakilan seluruh ranting."],["Juni 2026","Pelatihan Usaha Tani","Pelatihan budidaya bagi anggota."],["Maret 2026","Aksi Diakonia Paskah","Penyaluran bantuan ke keluarga prasejahtera."]];
+function $(i){return document.getElementById(i)}
+var tot=R.reduce(function(a,b){return a+b[1]},0);
+$("hs").innerHTML=[[tot,"Anggota terdaftar"],[R.length,"Ranting"],[K.reduce(function(a,b){return a+ +b[3]},0),"Kegiatan per tahun"],[18,"Mitra kerja sama"]].map(function(s){return '<div class="card stat"><b data-n="'+s[0]+'">0</b><span>'+s[1]+'</span></div>'}).join("");
+var mx=Math.max.apply(null,R.map(function(r){return r[1]}));
+$("bars").innerHTML=R.map(function(r){return '<div class="r"><span class="n">'+r[0]+'</span><div class="t"><div class="f" data-w="'+(r[1]/mx*100)+'"></div></div><span class="v">'+r[1]+'</span></div>'}).join("");
+$("kg").innerHTML=K.map(function(k){return '<div class="card"><div class="ic">'+k[0]+'</div><h3>'+k[1]+'</h3><p>'+k[2]+'</p><p style="margin-top:10px;color:var(--em2);font-weight:600">'+k[3]+'x per tahun</p></div>'}).join("");
+$("tl").innerHTML=T.map(function(t){return '<div class="it"><small>'+t[0]+'</small><h3 style="margin:2px 0;color:var(--navy)">'+t[1]+'</h3><p style="margin:0;color:var(--muted)">'+t[2]+'</p></div>'}).join("");
+$("fr").innerHTML=R.map(function(r){return '<option>'+r[0]+'</option>'}).join("");
+function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function tb(){var q=$("q").value.toLowerCase();$("tb").innerHTML=M.filter(function(m){return m.join(" ").toLowerCase().indexOf(q)>-1}).map(function(m){return '<tr><td>'+esc(m[0])+'</td><td>'+esc(m[1])+'</td><td>'+esc(m[2])+'</td><td style="color:'+(m[3]=="Aktif"?"var(--em2)":"var(--muted)")+';font-weight:600">'+m[3]+'</td></tr>'}).join("")}
+$("q").oninput=tb;tb();
+$("add").onclick=function(){var n=$("fn").value.trim();if(!n)return;M.unshift([n,$("fr").value,$("fb").value.trim()||"Umum","Aktif"]);$("fn").value="";$("fb").value="";tb();$("ok1").style.display="block"};
+$("sd").onclick=function(){if(!$("mn").value.trim()||!$("mm").value.trim())return;$("mn").value="";$("me").value="";$("mm").value="";$("ok2").style.display="block"};
+$("bg").onclick=function(){$("nv").classList.toggle("open")};
+function count(){document.querySelectorAll("[data-n]").forEach(function(e){var t=+e.dataset.n,s=0,st=t/40;var iv=setInterval(function(){s+=st;if(s>=t){s=t;clearInterval(iv)}e.textContent=Math.round(s)},25)})}
+function route(){var h=(location.hash||"#beranda").slice(1);if(!$("p-"+h))h="beranda";document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id=="p-"+h)});document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")=="#"+h)});$("nv").classList.remove("open");window.scrollTo(0,0);if(h=="beranda"){count();setTimeout(function(){document.querySelectorAll(".f").forEach(function(f){f.style.width=f.dataset.w+"%"})},100)}}
+var db=null,canW=false,live=null,gal=null;
+function rows(){return live?live:M.map(function(m,i){return {id:"d"+i,n:m[0],r:m[1],b:m[2],s:m[3]}})}
+tb=function(){var q=$("q").value.toLowerCase();$("tb").innerHTML=rows().filter(function(m){return (m.n+" "+m.r+" "+m.b).toLowerCase().indexOf(q)>-1}).map(function(m){return '<tr><td>'+esc(m.n)+'</td><td>'+esc(m.r)+'</td><td>'+esc(m.b)+'</td><td style="color:'+(m.s=="Aktif"?"var(--em2)":"var(--muted)")+';font-weight:600">'+esc(m.s)+'</td><td>'+(live&&canW?'<button class="x" data-d="'+esc(m.id)+'" title="Hapus">✕</button>':'')+'</td></tr>'}).join("")};
+$("q").oninput=tb;tb();
+$("tb").onclick=function(e){var d=e.target.dataset&&e.target.dataset.d;if(d&&db&&confirm("Hapus anggota ini?"))db.doc("members/"+d).delete().catch(function(){alert("Gagal menghapus.")})};
+$("add").onclick=function(){var n=$("fn").value.trim();if(!n)return;var o={n:n,r:$("fr").value,b:$("fb").value.trim()||"Umum",s:"Aktif",t:Date.now()};if(db&&canW){db.doc("members/m"+o.t).set(o).then(function(){$("ok1").textContent="Tersimpan permanen.";$("ok1").style.display="block"}).catch(function(){alert("Tidak punya izin menulis.")})}else{M.unshift([o.n,o.r,o.b,o.s]);tb();$("ok1").textContent="Mode demo: data hanya di tampilan ini.";$("ok1").style.display="block"}$("fn").value="";$("fb").value=""};
+var GD=[["🙏","Ibadah Bulanan","Contoh"],["🏕️","Retret Kaum Bapak","Contoh"],["🎁","Aksi Diakonia","Contoh"],["🌾","Pelatihan Usaha Tani","Contoh"]];
+function gr(){var h="";if(gal&&gal.length){h=gal.map(function(g){return '<div class="gi" data-u="'+esc(g.u)+'"><img src="'+esc(g.u)+'" alt="'+esc(g.c)+'" loading="lazy"><div class="c"><b>'+esc(g.c)+'</b><small>'+esc(g.d||"")+(canW?' · <span class="x" data-g="'+esc(g.id)+'">hapus</span>':'')+'</small></div></div>'}).join("")}else{h=GD.map(function(g){return '<div class="gi"><div class="ph2">'+g[0]+'</div><div class="c"><b>'+g[1]+'</b><small>'+g[2]+' · foto asli diunggah pengurus</small></div></div>'}).join("")}$("gl").innerHTML=h}
+gr();
+$("gl").onclick=function(e){var g=e.target.dataset&&e.target.dataset.g;if(g&&db){if(confirm("Hapus foto ini?"))db.doc("gallery/"+g).delete();return}var c=e.target.closest(".gi");if(c&&c.dataset.u){$("li").src=c.dataset.u;$("lb").classList.add("on")}};
+$("lb").onclick=function(){$("lb").classList.remove("on")};
+if(window.claude&&claude.use){Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]).then(function(r){db=r[0];var u=r[1],as=r[2];if(!db){$("auth").textContent="Mode demo: data contoh, belum tersimpan permanen. Login aktif saat halaman dibuka lewat claude.ai oleh akun yang diberi akses.";return}canW=!!(u&&u.canEdit());$("auth").textContent=canW?"Masuk sebagai pengurus (Editor): perubahan tersimpan permanen.":"Masuk sebagai pembaca: hanya pengurus (Editor) yang dapat mengubah data.";if(canW&&as){$("up").style.display="block";$("gu").onclick=function(){var f=$("gf").files[0];if(!f)return;$("ok3").textContent="Mengunggah...";$("ok3").style.display="inline";as.upload(f).then(function(a){var t=Date.now();return db.doc("gallery/g"+t).set({u:a.url,c:$("gc").value.trim()||"Kegiatan PKB",d:$("gd").value.trim(),t:t})}).then(function(){$("ok3").textContent="Foto ditambahkan.";$("gf").value="";$("gc").value="";$("gd").value=""}).catch(function(){$("ok3").textContent="Gagal mengunggah."})}}db.collection("members").onSnapshot(function(s){live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});if(!live.length)live=null;else live.sort(function(a,b){return (b.t||0)-(a.t||0)});tb();gr()},function(){});db.collection("gallery").onSnapshot(function(s){gal=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});gr()},function(){})}).catch(function(){$("auth").textContent="Mode demo: data contoh."})}else{$("auth").textContent="Mode demo: data contoh, belum tersimpan permanen."}
+window.addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
