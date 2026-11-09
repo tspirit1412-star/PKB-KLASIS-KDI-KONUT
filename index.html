@@ -140,6 +140,9 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 </main>
 <footer>© 2026 PKB Klasis Kendari-Konawe Utara · Data pada situs ini adalah contoh</footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 var R=[["Kendari Kota",142],["Mandonga",118],["Kadia",96],["Wua-Wua",88],["Konawe Utara",124],["Asera",64],["Wiwirano",52]];
 var M=[["Yohanis Lalang","Kendari Kota","Kerohanian","Aktif"],["Markus Tiranda","Mandonga","Sosial","Aktif"],["Daud Rante","Kadia","Ekonomi","Aktif"],["Petrus Maku","Konawe Utara","Organisasi","Aktif"],["Samuel Bunga","Asera","Kerohanian","Aktif"],["Yusuf Sampe","Wua-Wua","Sosial","Nonaktif"],["Elias Padang","Wiwirano","Ekonomi","Aktif"],["Andarias Tondok","Mandonga","Organisasi","Aktif"]];
@@ -172,7 +175,24 @@ function gr(){var h="";if(gal&&gal.length){h=gal.map(function(g){return '<div cl
 gr();
 $("gl").onclick=function(e){var g=e.target.dataset&&e.target.dataset.g;if(g&&db){if(confirm("Hapus foto ini?"))db.doc("gallery/"+g).delete();return}var c=e.target.closest(".gi");if(c&&c.dataset.u){$("li").src=c.dataset.u;$("lb").classList.add("on")}};
 $("lb").onclick=function(){$("lb").classList.remove("on")};
-if(window.claude&&claude.use){Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]).then(function(r){db=r[0];var u=r[1],as=r[2];if(!db){$("auth").textContent="Mode demo: data contoh, belum tersimpan permanen. Login aktif saat halaman dibuka lewat claude.ai oleh akun yang diberi akses.";return}canW=!!(u&&u.canEdit());$("auth").textContent=canW?"Masuk sebagai pengurus (Editor): perubahan tersimpan permanen.":"Masuk sebagai pembaca: hanya pengurus (Editor) yang dapat mengubah data.";if(canW&&as){$("up").style.display="block";$("gu").onclick=function(){var f=$("gf").files[0];if(!f)return;$("ok3").textContent="Mengunggah...";$("ok3").style.display="inline";as.upload(f).then(function(a){var t=Date.now();return db.doc("gallery/g"+t).set({u:a.url,c:$("gc").value.trim()||"Kegiatan PKB",d:$("gd").value.trim(),t:t})}).then(function(){$("ok3").textContent="Foto ditambahkan.";$("gf").value="";$("gc").value="";$("gd").value=""}).catch(function(){$("ok3").textContent="Gagal mengunggah."})}}db.collection("members").onSnapshot(function(s){live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});if(!live.length)live=null;else live.sort(function(a,b){return (b.t||0)-(a.t||0)});tb();gr()},function(){});db.collection("gallery").onSnapshot(function(s){gal=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});gr()},function(){})}).catch(function(){$("auth").textContent="Mode demo: data contoh."})}else{$("auth").textContent="Mode demo: data contoh, belum tersimpan permanen."}
+var CFG={apiKey:"AIzaSyDsXhR_uTKEv6JJs9HgzsktnB69hcwTHPU",authDomain:"pkb-kdi-konut.firebaseapp.com",projectId:"pkb-kdi-konut",storageBucket:"pkb-kdi-konut.firebasestorage.app",messagingSenderId:"967038013530",appId:"1:967038013530:web:1bf074d01cc06d83fec863"};
+var auth=null,unsubM=null;
+function bar(h){$("auth").innerHTML=h}
+function comp(f,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var s=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*s;c.height=im.height*s;c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",0.7))};im.src=r.result};r.readAsDataURL(f)}
+function initFb(){
+if(!window.firebase){bar("Firebase gagal dimuat. Mode demo: data contoh.");return}
+firebase.initializeApp(CFG);auth=firebase.auth();db=firebase.firestore();
+db.collection("gallery").orderBy("t","desc").limit(24).onSnapshot(function(s){gal=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});gr()},function(){});
+$("gu").onclick=function(){var f=$("gf").files[0];if(!f||!canW)return;$("ok3").textContent="Memproses...";$("ok3").style.display="inline";comp(f,function(u){var t=Date.now();db.doc("gallery/g"+t).set({u:u,c:$("gc").value.trim()||"Kegiatan PKB",d:$("gd").value.trim(),t:t}).then(function(){$("ok3").textContent="Foto ditambahkan.";$("gf").value="";$("gc").value="";$("gd").value=""}).catch(function(){$("ok3").textContent="Gagal: akun bukan pengurus."})})};
+auth.onAuthStateChanged(function(u){
+if(unsubM){unsubM();unsubM=null}
+canW=false;live=null;$("up").style.display="none";
+if(!u){bar('Belum masuk. Data di bawah adalah contoh. <button class="btn btn-p" id="lg" style="padding:6px 14px;margin-left:8px">Masuk dengan Google</button>');$("lg").onclick=function(){auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){alert("Login gagal: "+e.code)})};tb();gr();return}
+var lo=' <button class="btn" id="lo" style="padding:4px 12px;margin-left:8px;border:1px solid var(--line);background:var(--surface);color:var(--text)">Keluar</button>';
+bar("Memeriksa akses untuk "+esc(u.email||"")+"...");
+unsubM=db.collection("members").onSnapshot(function(s){canW=true;live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});bar("Masuk sebagai pengurus: "+esc(u.email)+". Perubahan tersimpan permanen."+lo);$("lo").onclick=function(){auth.signOut()};$("up").style.display="block";tb();gr()},function(){canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan."+lo);$("lo").onclick=function(){auth.signOut()};tb();gr()})
+})}
+initFb();
 window.addEventListener("hashchange",route);route();
 </script>
 </body>
