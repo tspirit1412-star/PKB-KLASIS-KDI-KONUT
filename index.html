@@ -65,13 +65,14 @@ input:focus,textarea:focus{outline:2px solid var(--em);border-color:transparent}
 .gal{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}.gi{border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:pointer;transition:.25s}.gi:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(15,37,71,.15)}.gi img,.gi .ph2{width:100%;aspect-ratio:4/3;object-fit:cover;display:grid;place-items:center;font-size:44px;background:linear-gradient(135deg,var(--navy2),var(--em));color:#fff}.gi div.c{padding:10px 14px;font-size:14px}.gi small{color:var(--muted);display:block}.lb{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.85);place-items:center;padding:20px}.lb.on{display:grid}.lb img{max-width:100%;max-height:85vh;border-radius:10px}.x{background:none;border:0;color:#ef4444;cursor:pointer;font-size:16px}
 .acct{margin-left:12px;position:relative}.lgb{background:var(--em);color:#04281c;border:0;border-radius:99px;padding:8px 20px;font:600 14px Inter,sans-serif;cursor:pointer;transition:.2s}.lgb:hover{background:#34d399}.av{width:38px;height:38px;border-radius:50%;border:2px solid var(--em);background:var(--navy2);color:#fff;font:700 15px Inter,sans-serif;cursor:pointer;padding:0;overflow:hidden;display:grid;place-items:center}.av img{width:100%;height:100%;object-fit:cover}.dd{display:none;position:absolute;right:0;top:46px;min-width:220px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 12px 30px rgba(0,0,0,.18);z-index:30}.dd.on{display:block}.dd small{display:block;color:var(--muted);word-break:break-all}.dd span{display:inline-block;margin:8px 0;padding:2px 10px;border-radius:99px;background:rgba(16,185,129,.15);color:var(--em2);font-size:12px;font-weight:600}.dd button{display:block;width:100%;margin-top:6px;padding:9px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:600 14px Inter,sans-serif;cursor:pointer}.dd button:hover{border-color:#ef4444;color:#ef4444}
 @media(max-width:720px){.acct{margin-left:auto;margin-right:8px}}
+.rd{display:none;position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.65);overflow:auto;padding:16px}.rd.on{display:block}.rd .in{max-width:760px;margin:16px auto;background:var(--surface);border-radius:16px;padding:26px;position:relative}.rd .in img{width:100%;border-radius:12px;margin:10px 0}.rd h2{padding-right:30px}.rd p{margin:0 0 14px}.rdx{position:absolute;right:14px;top:10px;background:none;border:0;font-size:24px;color:var(--muted);cursor:pointer}.pc small{margin-top:2px}
 footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px;font-size:14px}
 </style>
 </head>
 <body>
 <header><div class="wrap nav">
 <a class="logo" href="#beranda"><i>PKB</i><span>PKB Klasis Kendari-Konawe Utara</span></a>
-<nav id="nv"><a href="#beranda">Beranda</a><a href="#kegiatan">Kegiatan</a><a href="#galeri">Galeri</a><a href="#dashboard">Dashboard</a><a href="#tentang">Tentang &amp; Kontak</a></nav>
+<nav id="nv"><a href="#beranda">Beranda</a><a href="#kegiatan">Kegiatan</a><a href="#berita">Berita</a><a href="#galeri">Galeri</a><a href="#dashboard">Dashboard</a><a href="#tentang">Tentang &amp; Kontak</a></nav>
 <div class="acct" id="acct"></div>
 <button class="burger" id="bg" aria-label="Menu">☰</button>
 </div></header>
@@ -93,6 +94,7 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 <div class="card"><div class="ic">🌱</div><h3>Ekonomi Jemaat</h3><p>Pelatihan usaha, pertanian, dan jejaring kemitraan.</p></div>
 <div class="card"><div class="ic">📊</div><h3>Data &amp; Organisasi</h3><p>Pendataan anggota yang rapi dan terbuka untuk pemangku kepentingan.</p></div>
 </div></div>
+<div class="wrap sec" style="padding-top:0"><h2>Berita Terbaru</h2><p class="sub">Kabar terbaru pelayanan PKB. <a href="#berita" style="color:var(--em2);font-weight:600">Lihat semua</a></p><div class="gal" id="hn"></div></div>
 <div class="wrap sec" style="padding-top:0"><div class="two">
 <div class="card"><h3>Sebaran Anggota per Ranting</h3><div class="bars" id="bars" style="margin-top:12px"></div></div>
 <div class="cta" style="display:flex;flex-direction:column;justify-content:center"><h2>Mari Berkolaborasi</h2><p>Pemerintah daerah, mitra usaha, dan masyarakat umum dipersilakan menjalin kerja sama.</p><div><a class="btn btn-p" href="#tentang">Kirim Pesan</a></div></div>
@@ -105,6 +107,14 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 <h2 style="margin-top:44px">Linimasa Kegiatan</h2><p class="sub">Beberapa kegiatan terbaru.</p>
 <div class="tl" id="tl"></div></div>
 </section>
+
+<section class="page" id="p-berita">
+<div class="ph"><div class="wrap"><h1>Berita &amp; Kegiatan</h1><p>Kabar terbaru pelayanan PKB.</p></div></div>
+<div class="wrap sec">
+<div class="card" id="pe" style="display:none;margin-bottom:22px"><h3>Tulis Berita (pengurus)</h3><input id="pt" placeholder="Judul berita"><textarea id="pb" rows="7" placeholder="Isi berita. Pisahkan paragraf dengan satu baris kosong."></textarea><input type="file" id="pi" accept="image/*" multiple><small style="color:var(--muted)">Maksimal 4 foto, foto pertama menjadi sampul. Saat mengubah berita, kosongkan foto untuk mempertahankan foto lama.</small> <span id="pcnt" style="font-size:13px;color:var(--em2)"></span><br><br><button class="btn btn-p" id="pf">Terbitkan</button> <button class="btn" id="pcx" style="display:none;border:1px solid var(--line);background:var(--surface);color:var(--text)">Batal ubah</button> <span class="ok" id="ok4"></span></div>
+<div class="gal" id="pl"></div></div>
+</section>
+<div class="rd" id="rd"><div class="in" id="rdc"></div></div>
 
 <section class="page" id="p-galeri">
 <div class="ph"><div class="wrap"><h1>Galeri Kegiatan</h1><p>Dokumentasi foto pelayanan PKB.</p></div></div>
@@ -178,6 +188,26 @@ function gr(){var h="";if(gal&&gal.length){h=gal.map(function(g){return '<div cl
 gr();
 $("gl").onclick=function(e){var g=e.target.dataset&&e.target.dataset.g;if(g&&db){if(confirm("Hapus foto ini?"))db.doc("gallery/"+g).delete();return}var c=e.target.closest(".gi");if(c&&c.dataset.u){$("li").src=c.dataset.u;$("lb").classList.add("on")}};
 $("lb").onclick=function(){$("lb").classList.remove("on")};
+var posts=[],editId=null,pimgs=[];
+function fd(t){try{return new Date(t).toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"})}catch(e){return ""}}
+function ptxt(b){return esc(b).split(/\n{2,}/).map(function(p){return "<p>"+p.replace(/\n/g,"<br>")+"</p>"}).join("")}
+function pcard(p){return '<div class="gi pc" data-p="'+esc(p.id)+'">'+(p.imgs&&p.imgs[0]?'<img src="'+esc(p.imgs[0])+'" alt="" loading="lazy">':'<div class="ph2">&#128240;</div>')+'<div class="c"><b>'+esc(p.title)+'</b><small>'+fd(p.t)+'</small><small>'+esc((p.body||"").slice(0,100))+'...</small>'+(canW?'<small><span class="x" style="color:var(--em2)" data-e="'+esc(p.id)+'">ubah</span> &middot; <span class="x" data-x="'+esc(p.id)+'">hapus</span></small>':'')+'</div></div>'}
+function pr(){var e='<p style="color:var(--muted)">Belum ada berita. Berita pertama akan tampil di sini.</p>';$("pl").innerHTML=posts.length?posts.map(pcard).join(""):e;$("hn").innerHTML=posts.length?posts.slice(0,3).map(pcard).join(""):e}
+var gr0=gr;gr=function(){gr0();pr()};pr();
+function pfind(id){return posts.filter(function(p){return p.id==id})[0]}
+function pform(p){editId=p?p.id:null;$("pt").value=p?p.title:"";$("pb").value=p?p.body:"";$("pi").value="";pimgs=[];$("pcnt").textContent=p?"Mengubah berita. Foto lama dipertahankan kecuali Anda memilih foto baru.":"";$("pf").textContent=p?"Simpan Perubahan":"Terbitkan";$("pcx").style.display=p?"inline-block":"none"}
+document.addEventListener("click",function(e){var t=e.target,id;
+if((id=t.dataset&&t.dataset.x)){if(db&&confirm("Hapus berita ini?"))db.doc("posts/"+id).delete();return}
+if((id=t.dataset&&t.dataset.e)){var p=pfind(id);if(p){pform(p);$("pe").scrollIntoView({behavior:"smooth"})}return}
+var c=t.closest&&t.closest(".pc");
+if(c){var q=pfind(c.dataset.p);if(!q)return;$("rdc").innerHTML='<button class="rdx" id="rdx">&times;</button><h2>'+esc(q.title)+'</h2><small style="color:var(--muted)">'+fd(q.t)+'</small>'+(q.imgs||[]).map(function(u){return '<img src="'+esc(u)+'" alt="">'}).join("")+ptxt(q.body||"");$("rd").classList.add("on");return}
+if(t.id=="rd"||t.id=="rdx")$("rd").classList.remove("on")});
+$("pcx").onclick=function(){pform(null)};
+$("pi").onchange=function(){var fs=Array.prototype.slice.call(this.files,0,4);pimgs=[];if(!fs.length)return;$("pcnt").textContent="Memproses foto...";var n=0;fs.forEach(function(f,i){comp(f,function(u){pimgs[i]=u;if(++n==fs.length)$("pcnt").textContent=fs.length+" foto siap"})})};
+$("pf").onclick=function(){if(!canW||!db)return;var t=$("pt").value.trim(),b=$("pb").value.trim(),m=$("ok4");m.style.display="inline";if(!t||!b){m.textContent="Judul dan isi wajib diisi.";return}
+var old=editId?pfind(editId):null,tm=old?old.t:Date.now(),im=pimgs.length?pimgs:(old&&old.imgs?old.imgs:[]),o={title:t,body:b,imgs:im,t:tm};
+if(JSON.stringify(o).length>950000){m.textContent="Foto terlalu besar. Kurangi jumlah foto.";return}
+m.textContent="Menyimpan...";db.doc("posts/"+(editId||"p"+tm)).set(o).then(function(){m.textContent="Berita tersimpan.";pform(null)}).catch(function(){m.textContent="Gagal: akun bukan pengurus atau aturan belum dipasang."})};
 var CFG={apiKey:"AIzaSyDsXhR_uTKEv6JJs9HgzsktnB69hcwTHPU",authDomain:"pkb-kdi-konut.firebaseapp.com",projectId:"pkb-kdi-konut",storageBucket:"pkb-kdi-konut.firebasestorage.app",messagingSenderId:"967038013530",appId:"1:967038013530:web:1bf074d01cc06d83fec863"};
 var auth=null,unsubM=null;
 function bar(h){$("auth").innerHTML=h}
@@ -186,6 +216,7 @@ function initFb(){
 if(!window.firebase){bar("Firebase gagal dimuat. Mode demo: data contoh.");return}
 firebase.initializeApp(CFG);auth=firebase.auth();db=firebase.firestore();
 db.collection("gallery").orderBy("t","desc").limit(24).onSnapshot(function(s){gal=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});gr()},function(){});
+db.collection("posts").orderBy("t","desc").limit(30).onSnapshot(function(s){posts=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});pr()},function(){});
 $("gu").onclick=function(){var f=$("gf").files[0];if(!f||!canW)return;$("ok3").textContent="Memproses...";$("ok3").style.display="inline";comp(f,function(u){var t=Date.now();db.doc("gallery/g"+t).set({u:u,c:$("gc").value.trim()||"Kegiatan PKB",d:$("gd").value.trim(),t:t}).then(function(){$("ok3").textContent="Foto ditambahkan.";$("gf").value="";$("gc").value="";$("gd").value=""}).catch(function(){$("ok3").textContent="Gagal: akun bukan pengurus."})})};
 function login(){auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){if(e.code!="auth/popup-closed-by-user")alert("Login gagal: "+e.code)})}
 function acct(u,role){var a=$("acct");if(!u){a.innerHTML='<button class="lgb" id="lg">Masuk</button>';$("lg").onclick=login;return}
@@ -194,10 +225,10 @@ $("avb").onclick=function(e){e.stopPropagation();$("dd").classList.toggle("on")}
 document.addEventListener("click",function(e){var d=$("dd");if(d&&!d.contains(e.target))d.classList.remove("on")});
 auth.onAuthStateChanged(function(u){
 if(unsubM){unsubM();unsubM=null}
-canW=false;live=null;$("up").style.display="none";acct(u);
+canW=false;live=null;$("up").style.display="none";$("pe").style.display="none";acct(u);
 if(!u){bar('Belum masuk. Data di bawah adalah contoh. Klik <b>Masuk</b> di pojok kanan atas.');tb();gr();return}
 bar("Memeriksa akses untuk "+esc(u.email||"")+"...");
-unsubM=db.collection("members").onSnapshot(function(s){canW=true;live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});bar("Masuk sebagai pengurus. Perubahan tersimpan permanen.");acct(u,"Pengurus");$("up").style.display="block";tb();gr()},function(){canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");tb();gr()})
+unsubM=db.collection("members").onSnapshot(function(s){canW=true;live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});bar("Masuk sebagai pengurus. Perubahan tersimpan permanen.");acct(u,"Pengurus");$("up").style.display="block";$("pe").style.display="block";tb();gr()},function(){canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");tb();gr()})
 })}
 initFb();
 window.addEventListener("hashchange",route);route();
