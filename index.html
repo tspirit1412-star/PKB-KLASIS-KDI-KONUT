@@ -128,6 +128,7 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 <div class="ph"><div class="wrap"><h1>Dashboard Anggota</h1><p>Pratinjau data. Fitur lengkap menyusul di tahap berikutnya.</p></div></div>
 <div class="wrap sec">
 <div class="note" id="auth">Memeriksa status masuk...</div>
+<div class="card" id="ad" style="display:none;margin-bottom:22px"><h3>Kelola Pengurus</h3><p style="margin-bottom:12px">Tambahkan email Google. Pengurus mengelola konten (berita, galeri, anggota). Admin juga bisa mengelola daftar ini.</p><div class="two" style="gap:10px"><input id="ae" type="email" placeholder="email@gmail.com"><input id="an" placeholder="Nama (opsional)"></div><select id="ap"><option value="pengurus">Pengurus (kelola konten)</option><option value="admin">Admin (kelola konten dan pengurus)</option></select><button class="btn btn-p" id="aa">Tambah Pengurus</button> <span class="ok" id="ok5"></span><div class="tw" style="margin-top:14px"><table><thead><tr><th>Email</th><th>Nama</th><th>Peran</th><th></th></tr></thead><tbody id="at"></tbody></table></div></div>
 <div class="two">
 <div><input id="q" placeholder="Cari nama atau ranting..."><div class="tw"><table><thead><tr><th>Nama</th><th>Ranting</th><th>Bidang</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
 <div class="card"><h3>Form Anggota Baru</h3>
@@ -208,6 +209,12 @@ $("pf").onclick=function(){if(!canW||!db)return;var t=$("pt").value.trim(),b=$("
 var old=editId?pfind(editId):null,tm=old?old.t:Date.now(),im=pimgs.length?pimgs:(old&&old.imgs?old.imgs:[]),o={title:t,body:b,imgs:im,t:tm};
 if(JSON.stringify(o).length>950000){m.textContent="Foto terlalu besar. Kurangi jumlah foto.";return}
 m.textContent="Menyimpan...";db.doc("posts/"+(editId||"p"+tm)).set(o).then(function(){m.textContent="Berita tersimpan.";pform(null)}).catch(function(){m.textContent="Gagal: akun bukan pengurus atau aturan belum dipasang."})};
+var unsubA=null;
+function startAdm(u){if(unsubA)return;var me=(u.email||"").toLowerCase();unsubA=db.collection("admins").onSnapshot(function(s){$("at").innerHTML=s.docs.map(function(d){var x=d.data(),a=x.peran=="admin",m=d.id==me;return '<tr><td>'+esc(d.id)+'</td><td>'+esc(x.nama||"")+'</td><td>'+(m?'<b>Admin</b> <small>(Anda)</small>':'<select data-r="'+esc(d.id)+'" style="margin:0;padding:6px"><option value="pengurus"'+(a?'':' selected')+'>Pengurus</option><option value="admin"'+(a?' selected':'')+'>Admin</option></select>')+'</td><td>'+(m?'':'<button class="x" data-a="'+esc(d.id)+'">hapus</button>')+'</td></tr>'}).join("")},function(){$("at").innerHTML='<tr><td colspan="4">Aturan Firebase untuk admins belum diperbarui.</td></tr>'})}
+$("aa").onclick=function(){var e=$("ae").value.trim().toLowerCase(),m=$("ok5");m.style.display="inline";if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e)){m.textContent="Email tidak valid.";return}
+db.doc("admins/"+e).set({nama:$("an").value.trim(),peran:$("ap").value,t:Date.now()}).then(function(){m.textContent="Ditambahkan.";$("ae").value="";$("an").value=""}).catch(function(){m.textContent="Gagal: hanya admin yang boleh, atau aturan Firebase belum diperbarui."})};
+$("at").onclick=function(e){var id=e.target.dataset&&e.target.dataset.a;if(id&&confirm("Hapus akses "+id+"?"))db.doc("admins/"+id).delete().catch(function(){alert("Gagal menghapus.")})};
+$("at").onchange=function(e){var id=e.target.dataset&&e.target.dataset.r;if(id)db.doc("admins/"+id).update({peran:e.target.value}).catch(function(){alert("Gagal mengubah peran.")})};
 var CFG={apiKey:"AIzaSyDsXhR_uTKEv6JJs9HgzsktnB69hcwTHPU",authDomain:"pkb-kdi-konut.firebaseapp.com",projectId:"pkb-kdi-konut",storageBucket:"pkb-kdi-konut.firebasestorage.app",messagingSenderId:"967038013530",appId:"1:967038013530:web:1bf074d01cc06d83fec863"};
 var auth=null,unsubM=null;
 function bar(h){$("auth").innerHTML=h}
@@ -224,11 +231,19 @@ var n=u.displayName||u.email||"?";a.innerHTML='<button class="av" id="avb" aria-
 $("avb").onclick=function(e){e.stopPropagation();$("dd").classList.toggle("on")};$("lo").onclick=function(){auth.signOut()}}
 document.addEventListener("click",function(e){var d=$("dd");if(d&&!d.contains(e.target))d.classList.remove("on")});
 auth.onAuthStateChanged(function(u){
-if(unsubM){unsubM();unsubM=null}
+if(unsubM){unsubM();unsubM=null}if(unsubA){unsubA();unsubA=null}$("ad").style.display="none";
 canW=false;live=null;$("up").style.display="none";$("pe").style.display="none";acct(u);
 if(!u){bar('Belum masuk. Data di bawah adalah contoh. Klik <b>Masuk</b> di pojok kanan atas.');tb();gr();return}
 bar("Memeriksa akses untuk "+esc(u.email||"")+"...");
-unsubM=db.collection("members").onSnapshot(function(s){canW=true;live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});bar("Masuk sebagai pengurus. Perubahan tersimpan permanen.");acct(u,"Pengurus");$("up").style.display="block";$("pe").style.display="block";tb();gr()},function(){canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");tb();gr()})
+db.doc("admins/"+(u.email||"").toLowerCase()).get().then(function(d){
+if(!d.exists)throw 0;
+var ad=(d.data().peran||"")=="admin";canW=true;
+bar(ad?"Masuk sebagai admin: Anda bisa mengelola konten dan daftar pengurus.":"Masuk sebagai pengurus: Anda bisa mengelola berita, galeri, dan data anggota.");
+acct(u,ad?"Admin":"Pengurus");$("up").style.display="block";$("pe").style.display="block";
+if(ad){$("ad").style.display="block";startAdm(u)}
+unsubM=db.collection("members").onSnapshot(function(s){live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});tb();gr()},function(){live=null;tb();gr()});
+tb();gr()
+}).catch(function(){canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");tb();gr()})
 })}
 initFb();
 window.addEventListener("hashchange",route);route();
