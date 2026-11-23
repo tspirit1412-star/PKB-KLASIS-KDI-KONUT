@@ -81,6 +81,25 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 .xl input{border:0;border-radius:0;margin:0;padding:9px 10px;background:transparent}.xl input:focus{outline:2px solid var(--em);outline-offset:-2px;border-color:transparent;background:rgba(16,185,129,.07)}
 .xl .num{text-align:right;font-variant-numeric:tabular-nums}.xl tfoot td{padding:9px 10px;background:var(--bg);font-weight:700}.xl td.dl{text-align:center}
 .jbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.stg{position:relative;margin-left:12px}.stg .snd{margin:0}
+.sp{display:none;position:absolute;right:0;top:46px;width:290px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 12px 30px rgba(0,0,0,.18);z-index:30}.sp.on{display:block}
+.sp>small{display:block;color:var(--muted);font-size:12px;margin:10px 0 6px}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}.seg button{flex:1;white-space:nowrap;border:0;background:none;color:var(--muted);font:600 12px Inter,sans-serif;padding:7px 4px;border-radius:7px;cursor:pointer}.seg button.on{background:var(--surface);color:var(--em2);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.sw{display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:14px;cursor:pointer}.sw input{display:none}.sw i{width:42px;height:24px;border-radius:99px;background:var(--line);position:relative;transition:.2s;flex:none}.sw i:after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}.sw input:checked+i{background:var(--em)}.sw input:checked+i:after{left:21px}
+.dd a.ddl{display:block;margin-top:6px;padding:9px;border-radius:8px;border:1px solid var(--em);color:var(--em2);font:600 14px Inter,sans-serif;text-align:center}.dd a.ddl:hover{background:rgba(16,185,129,.1)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;border-bottom:1px solid var(--line);padding-bottom:10px}.tabs button,.tabs a{border:1px solid var(--line);background:var(--surface);color:var(--muted);font:600 14px Inter,sans-serif;padding:9px 14px;border-radius:10px;cursor:pointer}.tabs button.on{background:var(--em);color:#04281c;border-color:var(--em)}.tabs a{margin-left:auto}.tabs a+a{margin-left:0}.tabs button:hover:not(.on),.tabs a:hover{border-color:var(--em);color:var(--em2)}
+@media(max-width:720px){.tabs a{margin-left:0}.stg{margin-left:auto;margin-right:8px}.acct{margin-left:0}}
+.tp{display:none}.tp.on{display:block;animation:fi .3s ease}
+.smsg{margin:10px 0 0;font-size:14px;font-weight:600;color:var(--em2);min-height:1px}
+.xl select{border:0;border-radius:0;margin:0;padding:9px 8px;background:transparent}.xl select:focus{outline:2px solid var(--em);outline-offset:-2px}.xl input[type=date]{padding:7px 8px}.xl input.icn{text-align:center;font-size:18px;padding:6px}
+a.card.stat{display:block;color:inherit}.stat .ss{display:block;font-size:12px;color:var(--muted);margin-top:2px}.stat b.nx{font-size:30px}.stat span{display:block}
+.kyr{display:flex;align-items:center;gap:10px;margin:6px 0 16px;flex-wrap:wrap}.kyr b{font-size:20px;color:var(--navy);min-width:60px;text-align:center}.kyr .btn-s{padding:6px 14px;font-size:18px}
+.kl{margin-left:auto;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}.kl i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-left:8px}.kl .d1,.ev.done b{background:var(--em)}.kl .d2,.ev.plan b{background:var(--navy2)}.kl .d3,.ev.tunda b{background:var(--muted)}
+.kal{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}.km{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}.km.now{border:2px solid var(--em);box-shadow:0 8px 22px rgba(16,185,129,.15)}.km.past{opacity:.85}
+.km h4{margin:0 0 6px;color:var(--navy);font-size:15px;display:flex;justify-content:space-between}.km h4 small{background:rgba(16,185,129,.15);color:var(--em2);border-radius:99px;padding:0 8px;font-size:12px}
+.ev{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.35}.ev b{flex:none;width:32px;height:32px;border-radius:8px;color:#fff;display:grid;place-items:center;font-size:14px}.ev small{display:block;color:var(--muted);font-size:12px;margin-top:2px}.ev.tunda span{text-decoration:line-through;color:var(--muted)}
+.kosong{margin:4px 0 0;color:var(--muted);font-size:13px}
+.card.up{display:flex;gap:14px;align-items:flex-start}.card.up>b{flex:none;background:linear-gradient(135deg,var(--navy2),var(--em));color:#fff;border-radius:12px;padding:10px 8px;min-width:64px;text-align:center;font-size:16px}.card.up h3{margin:0 0 2px}.card.up small{color:var(--em2);font-weight:600}
 .mgrid{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 320px}@media(max-width:900px){.mgrid{grid-template-columns:1fr}}
 .tbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn-s{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 16px;font-size:14px}.btn-s:hover{border-color:var(--em);color:var(--em2)}
@@ -94,10 +113,9 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <body>
 <header><div class="wrap nav">
 <a class="logo" href="#beranda"><i>PKB</i><span>PKB Klasis Kendari-Konawe Utara</span></a>
-<nav id="nv"><a href="#beranda">Beranda</a><a href="#kegiatan">Kegiatan</a><a href="#berita">Berita</a><a href="#galeri">Galeri</a><a href="#dashboard">Dashboard</a><a href="#tentang">Tentang &amp; Kontak</a></nav>
+<nav id="nv"><a href="#beranda">Beranda</a><a href="#kegiatan">Kegiatan</a><a href="#berita">Berita</a><a href="#galeri">Galeri</a><a href="#kerja" id="nvk" style="display:none">🛠️ Ruang Kerja</a><a href="#tentang">Tentang &amp; Kontak</a></nav>
+<div class="stg"><button class="snd" id="stb" aria-label="Pengaturan" title="Pengaturan">⚙️</button><div class="sp" id="stp"><b>Pengaturan</b><small>Tampilan</small><div class="seg" id="thm"><button data-t="light">☀️ Terang</button><button data-t="dark">🌙 Gelap</button><button data-t="auto">💻 Otomatis</button></div><label class="sw"><span>🔊 Suara klik</span><input type="checkbox" id="sndc"><i></i></label></div></div>
 <div class="acct" id="acct"></div>
-<button class="snd" id="thm" aria-label="Ganti tema" title="Mode gelap/terang">🌙</button>
-<button class="snd" id="snd" aria-label="Suara aktif" title="Matikan/nyalakan suara">🔊</button>
 <button class="burger" id="bg" aria-label="Menu">☰</button>
 </div></header>
 
@@ -126,10 +144,13 @@ tr.editing td{background:rgba(16,185,129,.12)}
 </section>
 
 <section class="page" id="p-kegiatan">
-<div class="ph"><div class="wrap"><h1>Kegiatan &amp; Layanan</h1><p>Rekam jejak program PKB (contoh data).</p></div></div>
-<div class="wrap sec"><div class="grid" id="kg"></div>
-<h2 style="margin-top:44px">Linimasa Kegiatan</h2><p class="sub">Beberapa kegiatan terbaru.</p>
-<div class="tl" id="tl"></div></div>
+<div class="ph"><div class="wrap"><h1>Kegiatan &amp; Layanan</h1><p>Program rutin dan kalender kegiatan tahunan PKB.</p></div></div>
+<div class="wrap sec">
+<h2>Kegiatan Mendatang</h2><p class="sub">Agenda terdekat PKB.</p><div class="grid" id="kup"></div>
+<h2 style="margin-top:44px">Kalender Kegiatan Tahunan</h2>
+<div class="kyr"><button class="btn btn-s" id="kp" aria-label="Tahun sebelumnya">‹</button><b id="kaly"></b><button class="btn btn-s" id="kn" aria-label="Tahun berikutnya">›</button><span class="kl"><i class="d1"></i>Terlaksana <i class="d2"></i>Rencana <i class="d3"></i>Ditunda</span></div>
+<div class="kal" id="kal"></div>
+<h2 style="margin-top:44px">Program Rutin</h2><p class="sub">Program pelayanan yang dijalankan setiap tahun.</p><div class="grid" id="kg"></div></div>
 </section>
 
 <section class="page" id="p-berita">
@@ -148,16 +169,13 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <div class="lb" id="lb"><img id="li" alt=""></div>
 </section>
 
-<section class="page" id="p-dashboard">
-<div class="ph"><div class="wrap"><h1>Dashboard Anggota</h1><p>Pratinjau data. Fitur lengkap menyusul di tahap berikutnya.</p></div></div>
+<section class="page" id="p-kerja">
+<div class="ph"><div class="wrap"><h1>Ruang Kerja Pengurus</h1><p>Tempat pengurus dan admin mengelola data anggota, jemaat, kegiatan, dan akses.</p></div></div>
 <div class="wrap sec">
 <div class="note" id="auth">Memeriksa status masuk...</div>
-<div class="card" id="jc" style="display:none;margin-bottom:22px">
-<div class="jh"><div><h3 style="margin:0">Data Jemaat Gereja</h3><small style="color:var(--muted)">Tampil di Beranda sebagai "Sebaran Anggota per Jemaat Gereja". Klik sel untuk mengetik, <b>Enter</b> untuk turun ke baris berikutnya, atau salin dari Excel lalu tempel (<b>Ctrl+V</b>) di sel pertama.</small></div><span id="jst" class="jst"></span></div>
-<div class="tw" style="margin-top:12px"><table class="xl"><thead><tr><th class="rn">#</th><th>Nama Jemaat Gereja</th><th style="width:160px;text-align:right">Jumlah Anggota</th><th style="width:44px"></th></tr></thead><tbody id="jb"></tbody><tfoot><tr><td class="rn"></td><td>TOTAL <small id="jcnt" style="color:var(--muted);font-weight:500"></small></td><td id="jtot" class="num"></td><td></td></tr></tfoot></table></div>
-<div class="jbar"><button class="btn btn-s" id="jad">+ Tambah Baris</button><button class="btn btn-s" id="jaz">Urut A–Z</button><button class="btn btn-s" id="jnum">Urut Terbanyak</button><span style="flex:1"></span><button class="btn btn-s" id="jrs">Batalkan</button><button class="btn btn-p" id="jsv">💾 Simpan</button></div>
-<p id="jmsg" style="margin:10px 0 0;font-size:14px;font-weight:600;color:var(--em2)"></p></div>
-<div class="card" id="ad" style="display:none;margin-bottom:22px"><h3>Kelola Pengurus</h3><p style="margin-bottom:12px">Tambahkan email Google. Pengurus mengelola konten (berita, galeri, anggota). Admin juga bisa mengelola daftar ini.</p><div class="two" style="gap:10px"><input id="ae" type="email" placeholder="email@gmail.com"><input id="an" placeholder="Nama (opsional)"></div><select id="ap"><option value="pengurus">Pengurus (kelola konten)</option><option value="admin">Admin (kelola konten dan pengurus)</option></select><button class="btn btn-p" id="aa">Tambah Pengurus</button> <span class="ok" id="ok5"></span><div class="tw" style="margin-top:14px"><table><thead><tr><th>Email</th><th>Nama</th><th>Peran</th><th></th></tr></thead><tbody id="at"></tbody></table></div></div>
+<div id="rk" style="display:none">
+<div class="tabs" id="tabs"><button data-tab="anggota" class="on">👥 Anggota</button><button data-tab="jemaat">⛪ Jemaat Gereja</button><button data-tab="kalender">📅 Kalender Kegiatan</button><button data-tab="program">📋 Program Rutin</button><button data-tab="pengurus" id="tabadm" style="display:none">🔑 Kelola Pengurus</button><a href="#berita">📰 Tulis Berita ↗</a><a href="#galeri">🖼️ Unggah Foto ↗</a></div>
+<div class="tp on" data-p="anggota">
 <div class="mgrid">
 <div style="min-width:0"><div class="tbar"><input id="q" placeholder="Cari nama, jemaat gereja, atau No. HP..." style="margin:0;flex:1;min-width:200px"><div id="exp" style="display:none;gap:8px"><label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:4px;white-space:nowrap"><input type="checkbox" id="xhp" checked style="width:auto;margin:0"> sertakan No. HP</label><button class="btn btn-s" id="xx">⬇ Excel</button><button class="btn btn-s" id="xp">⬇ PDF</button></div></div>
 <small id="qc" style="color:var(--muted);display:block;margin:8px 0"></small>
@@ -168,6 +186,12 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <input id="fn" placeholder="Nama lengkap"><select id="fj" aria-label="Jemaat gereja"></select><input id="fh" type="tel" inputmode="tel" placeholder="No. HP, mis. 0812xxxxxxxx"><input id="fb" placeholder="Bidang pelayanan"><select id="fs"><option>Aktif</option><option>Nonaktif</option></select>
 <button class="btn btn-p" id="add">Tambah Anggota</button> <button class="btn btn-s" id="fcx" style="display:none">Batal ubah</button></fieldset>
 <p class="ok" id="ok1"></p></div>
+</div>
+</div>
+<div class="tp" data-p="jemaat"><div id="jc"></div></div>
+<div class="tp" data-p="kalender"><div id="kc"></div></div>
+<div class="tp" data-p="program"><div id="pc"></div></div>
+<div class="tp" data-p="pengurus"><div class="card" id="ad"><h3>Kelola Pengurus</h3><p style="margin-bottom:12px">Tambahkan email Google. Pengurus mengelola konten (berita, galeri, anggota). Admin juga bisa mengelola daftar ini.</p><div class="two" style="gap:10px"><input id="ae" type="email" placeholder="email@gmail.com"><input id="an" placeholder="Nama (opsional)"></div><select id="ap"><option value="pengurus">Pengurus (kelola konten)</option><option value="admin">Admin (kelola konten dan pengurus)</option></select><button class="btn btn-p" id="aa">Tambah Pengurus</button> <span class="ok" id="ok5"></span><div class="tw" style="margin-top:14px"><table><thead><tr><th>Email</th><th>Nama</th><th>Peran</th><th></th></tr></thead><tbody id="at"></tbody></table></div></div></div>
 </div></div>
 </section>
 
@@ -193,16 +217,12 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 var M=[["Yohanis Lalang","Jemaat Imanuel Kendari","081200000101","Kerohanian","Aktif"],["Markus Tiranda","Jemaat Efrata Mandonga","081200000102","Sosial","Aktif"],["Daud Rante","Jemaat Bethel Kadia","081200000103","Ekonomi","Aktif"],["Petrus Maku","Jemaat Sion Wanggudu","081200000104","Organisasi","Aktif"],["Samuel Bunga","Jemaat Getsemani Asera","081200000105","Kerohanian","Aktif"],["Yusuf Sampe","Jemaat Moria Wua-Wua","081200000106","Sosial","Nonaktif"],["Elias Padang","Jemaat Pniel Wiwirano","081200000107","Ekonomi","Aktif"],["Andarias Tondok","Jemaat Efrata Mandonga","081200000108","Organisasi","Aktif"]];
-var K=[["🙏","Ibadah Bulanan","Ibadah bersama seluruh jemaat setiap bulan.","12"],["📖","Pendalaman Alkitab","Kelompok kecil rutin tiap pekan.","48"],["🏕️","Retret Kaum Bapak","Pembinaan rohani dan kebersamaan.","2"],["🎁","Aksi Diakonia","Bantuan sembako dan kunjungan keluarga.","9"],["🌾","Pelatihan Usaha Tani","Kerja sama dengan penyuluh pertanian.","4"],["🤲","Bakti Sosial","Gotong royong dan pelayanan masyarakat.","6"]];
-var T=[["Agustus 2026","Retret Kaum Bapak Klasis","Dihadiri perwakilan seluruh jemaat."],["Juni 2026","Pelatihan Usaha Tani","Pelatihan budidaya bagi anggota."],["Maret 2026","Aksi Diakonia Paskah","Penyaluran bantuan ke keluarga prasejahtera."]];
 function $(i){return document.getElementById(i)}
-$("kg").innerHTML=K.map(function(k){return '<div class="card"><div class="ic">'+k[0]+'</div><h3>'+k[1]+'</h3><p>'+k[2]+'</p><p style="margin-top:10px;color:var(--em2);font-weight:600">'+k[3]+'x per tahun</p></div>'}).join("");
-$("tl").innerHTML=T.map(function(t){return '<div class="it"><small>'+t[0]+'</small><h3 style="margin:2px 0;color:var(--navy)">'+t[1]+'</h3><p style="margin:0;color:var(--muted)">'+t[2]+'</p></div>'}).join("");
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 $("sd").onclick=function(){if(!$("mn").value.trim()||!$("mm").value.trim())return;$("mn").value="";$("me").value="";$("mm").value="";$("ok2").style.display="block"};
 $("bg").onclick=function(){$("nv").classList.toggle("open")};
 function count(){document.querySelectorAll("[data-n]").forEach(function(e){var t=+e.dataset.n,s=0,st=t/40;var iv=setInterval(function(){s+=st;if(s>=t){s=t;clearInterval(iv)}e.textContent=Math.round(s)},25)})}
-function route(){var h=(location.hash||"#beranda").slice(1);if(!$("p-"+h))h="beranda";document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id=="p-"+h)});document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")=="#"+h)});$("nv").classList.remove("open");window.scrollTo(0,0);if(h=="beranda"){count();setTimeout(function(){document.querySelectorAll(".f").forEach(function(f){f.style.width=f.dataset.w+"%"})},100)}}
+function route(){var h=(location.hash||"#beranda").slice(1);if(h=="dashboard")h="kerja";var _d=$("dd");if(_d)_d.classList.remove("on");var _s=$("stp");if(_s)_s.classList.remove("on");if(!$("p-"+h))h="beranda";document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id=="p-"+h)});document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")=="#"+h)});$("nv").classList.remove("open");window.scrollTo(0,0);if(h=="beranda"){count();setTimeout(function(){document.querySelectorAll(".f").forEach(function(f){f.style.width=f.dataset.w+"%"})},100)}}
 var db=null,canW=false,live=null,gal=null,editM=null;
 function pad(n){return (n<10?"0":"")+n}
 function rows(){return live?live:M.map(function(m,i){return {id:"d"+i,n:m[0],j:m[1],hp:m[2],b:m[3],s:m[4]}})}
@@ -214,7 +234,7 @@ $("q").oninput=tb;
 function setJemaat(v){var s=$("fj");if(v&&!Array.prototype.some.call(s.options,function(o){return o.value==v})){var o=document.createElement("option");o.value=v;o.textContent=v;s.appendChild(o)}s.value=v||""}
 function mform(m){editM=m?m.id:null;$("fn").value=m?m.n||"":"";setJemaat(m?m.j:"");$("fh").value=m?m.hp||"":"";$("fb").value=m?m.b||"":"";$("fs").value=m&&m.s=="Nonaktif"?"Nonaktif":"Aktif";
 $("add").textContent=m?"Simpan Perubahan":"Tambah Anggota";$("mft").textContent=m?"Ubah Data Anggota":"Form Anggota Baru";$("fcx").style.display=m?"inline-block":"none";tb()}
-function lockForm(){var ok=!!(canW&&db);$("mfs").disabled=!ok;$("mlk").style.display=ok?"none":"block";$("exp").style.display=ok?"flex":"none";$("jc").style.display=ok?"block":"none";if(!ok&&jDirty)jLoad();if(!ok){$("ok1").style.display="none";if(editM)mform(null)}}
+function lockForm(){var ok=!!(canW&&db);$("mfs").disabled=!ok;$("mlk").style.display=ok?"none":"block";$("exp").style.display=ok?"flex":"none";$("rk").style.display=ok?"block":"none";$("nvk").style.display=ok?"":"none";SHEETS.forEach(function(s){s.show(ok)});if(!ok){$("ok1").style.display="none";if(editM)mform(null)}}
 $("fcx").onclick=function(){mform(null);$("ok1").style.display="none"};
 $("tb").onclick=function(e){var t=e.target,d=t.dataset&&t.dataset.d,me=t.dataset&&t.dataset.me;
 if(me){var m=rows().filter(function(x){return x.id==me})[0];if(m){mform(m);$("ok1").style.display="none";$("mf").scrollIntoView({behavior:"smooth",block:"center"});$("fn").focus({preventScroll:true})}return}
@@ -264,59 +284,123 @@ L.map(function(m,i){return '<tr><td class="n">'+(i+1)+'</td><td>'+esc(m.n)+'</td
 '</div><script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>';
 var w=window.open("","_blank");if(!w){alert("Pop-up diblokir. Izinkan pop-up untuk situs ini, lalu klik PDF lagi.");return}
 w.document.open();w.document.write(html);w.document.close()};
-/* ===== Data Jemaat Gereja (sebaran anggota) ===== */
-var JD=[["Jemaat Imanuel Kendari",142],["Jemaat Efrata Mandonga",118],["Jemaat Bethel Kadia",96],["Jemaat Moria Wua-Wua",88],["Jemaat Sion Wanggudu",124],["Jemaat Getsemani Asera",64],["Jemaat Pniel Wiwirano",52]];
-var JS=null,JG=[],jDirty=false,jSeq=0;
-function jList(){return JS||JD.map(function(x){return {n:x[0],a:x[1]}})}
-function renderJemaat(){var L=jList(),tot=L.reduce(function(s,x){return s+(+x.a||0)},0),mx=Math.max.apply(null,L.map(function(x){return +x.a||0}).concat([1]));
-$("hs").innerHTML=[[tot,"Anggota terdaftar"],[L.length,"Jemaat gereja"],[K.reduce(function(a,b){return a+ +b[3]},0),"Kegiatan per tahun"],[18,"Mitra kerja sama"]].map(function(s){return '<div class="card stat"><b data-n="'+s[0]+'">0</b><span>'+s[1]+'</span></div>'}).join("");
-$("bars").innerHTML=L.length?L.map(function(x){return '<div class="jr"><div class="rh"><span>'+esc(x.n)+'</span><b>'+(+x.a||0)+'</b></div><div class="t"><div class="f" data-w="'+((+x.a||0)/mx*100)+'"></div></div></div>'}).join(""):'<p style="color:var(--muted)">Belum ada data jemaat.</p>';
-$("jnote").textContent=JS?"":"Data contoh. Pengurus dapat mengisi data asli di Dashboard.";
-var cur=$("fj").value;$("fj").innerHTML='<option value="">— Pilih jemaat gereja —</option>'+L.map(function(x){return '<option value="'+esc(x.n)+'">'+esc(x.n)+'</option>'}).join("");setJemaat(cur);
-if($("p-beranda").classList.contains("on")){count();setTimeout(function(){document.querySelectorAll("#bars .f").forEach(function(f){f.style.width=f.dataset.w+"%"})},60)}}
-function jLoad(){JG=jList().map(function(x){return {id:++jSeq,n:x.n,a:x.a,o:JS?x.n:null}});jSetDirty(false);jDraw()}
-function jSetDirty(v){jDirty=v;var s=$("jst");s.textContent=v?"● Ada perubahan belum disimpan":(JS?"✓ Tersimpan":"Data contoh, belum disimpan");s.className="jst"+(v?" dirty":"")}
-function jDraw(){$("jb").innerHTML=JG.map(function(x,i){return '<tr><td class="rn">'+(i+1)+'</td><td><input data-r="'+i+'" data-c="0" value="'+esc(x.n)+'" placeholder="Nama jemaat gereja"></td><td><input class="num" data-r="'+i+'" data-c="1" inputmode="numeric" value="'+esc(x.a)+'" placeholder="0"></td><td class="dl"><button class="x" data-jd="'+i+'" title="Hapus baris">✕</button></td></tr>'}).join("");jTot()}
-function jTot(){var t=JG.reduce(function(s,x){return s+(+x.a||0)},0),n=JG.filter(function(x){return String(x.n).trim()}).length;$("jtot").textContent=t.toLocaleString("id-ID");$("jcnt").textContent="("+n+" jemaat)"}
-function jFocus(r,c){var el=document.querySelector('#jb input[data-r="'+r+'"][data-c="'+c+'"]');if(el){el.focus();el.select()}}
-function jAdd(){JG.push({id:++jSeq,n:"",a:"",o:null});jSetDirty(true);jDraw()}
-$("jad").onclick=function(){jAdd();jFocus(JG.length-1,0)};
-$("jb").oninput=function(e){var t=e.target,r=+t.dataset.r,c=+t.dataset.c;if(isNaN(r)||!JG[r])return;
-if(c==0)JG[r].n=t.value;else{var v=t.value.replace(/\D/g,"");if(v!==t.value)t.value=v;JG[r].a=v===""?"":parseInt(v,10)}jSetDirty(true);jTot()};
-$("jb").onkeydown=function(e){var t=e.target,r=+t.dataset.r,c=+t.dataset.c;if(isNaN(r))return;
-if(e.key=="Enter"){e.preventDefault();if(r==JG.length-1)jAdd();jFocus(r+1,c)}
-else if(e.key=="ArrowDown"){e.preventDefault();jFocus(r+1,c)}
-else if(e.key=="ArrowUp"){e.preventDefault();jFocus(r-1,c)}};
-$("jb").onpaste=function(e){var t=e.target,r=+t.dataset.r,c=+t.dataset.c;if(isNaN(r))return;
-var tx=(e.clipboardData||window.clipboardData).getData("text")||"";if(!/[\t\n]/.test(tx.replace(/\s+$/,"")))return;e.preventDefault();
-var lines=tx.replace(/\r/g,"").replace(/\n+$/,"").split("\n"),rr=r;
-lines.forEach(function(ln,i){var cells=ln.split("\t");if(i==0&&c==0&&cells[1]!==undefined&&/[a-z]/i.test(cells[1])&&!/\d/.test(cells[1]))return;
-while(rr>=JG.length)JG.push({id:++jSeq,n:"",a:"",o:null});
-cells.forEach(function(v,k){var cc=c+k;if(cc==0)JG[rr].n=v.trim();else if(cc==1){var d=v.replace(/\D/g,"");JG[rr].a=d===""?"":parseInt(d,10)}});rr++});
-jSetDirty(true);jDraw();jFocus(r,c)};
-$("jb").onclick=function(e){var i=e.target.dataset&&e.target.dataset.jd;if(i===undefined)return;i=+i;var x=JG[i];
-if(x&&String(x.n).trim()&&!confirm('Hapus baris "'+x.n+'"? (Belum permanen sampai Anda klik Simpan)'))return;JG.splice(i,1);jSetDirty(true);jDraw()};
-$("jaz").onclick=function(){JG.sort(function(a,b){return String(a.n).localeCompare(String(b.n),"id")});jSetDirty(true);jDraw()};
-$("jnum").onclick=function(){JG.sort(function(a,b){return (+b.a||0)-(+a.a||0)});jSetDirty(true);jDraw()};
-$("jrs").onclick=function(){if(jDirty&&!confirm("Batalkan semua perubahan yang belum disimpan?"))return;jLoad();$("jmsg").textContent=""};
-function jRename(ren){if(!ren.length||!live||!db.batch)return Promise.resolve(0);var ups=[];
-ren.forEach(function(p){live.forEach(function(m){if((m.j||"")==p[0])ups.push([m.id,p[1]])})});if(!ups.length)return Promise.resolve(0);
+/* ===== Lembar data ala Excel (dipakai Jemaat, Kalender, Program) ===== */
+var SHEETS=[];
+var BLN=["januari","februari","maret","april","mei","juni","juli","agustus","september","oktober","november","desember"],BLS=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],BEN=["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+function parseTgl(v){v=String(v==null?"":v).trim();if(!v)return "";var m,y;
+if(m=v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/))return m[1]+"-"+pad(+m[2])+"-"+pad(+m[3]);
+if(m=v.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})$/)){y=+m[3];if(y<100)y+=2000;return y+"-"+pad(+m[2])+"-"+pad(+m[1])}
+if(m=v.match(/^(\d{1,2})\s+([A-Za-z]+)\.?\s+(\d{4})$/)){var s=m[2].toLowerCase(),i=-1;BLN.forEach(function(b,k){if(i<0&&s.length>=3&&b.indexOf(s.slice(0,3))==0)i=k});if(i<0)BEN.forEach(function(b,k){if(i<0&&s.indexOf(b)==0)i=k});if(i>=0)return m[3]+"-"+pad(i+1)+"-"+pad(+m[1])}
+if(/^\d{5}$/.test(v)){var d=new Date(Date.UTC(1899,11,30)+(+v)*864e5);return d.getUTCFullYear()+"-"+pad(d.getUTCMonth()+1)+"-"+pad(d.getUTCDate())}
+return ""}
+function isoToday(){var d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+function tglD(s){var p=String(s).split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+function tglPendek(s){var d=tglD(s);return d.getDate()+" "+BLS[d.getMonth()]}
+function tglPanjang(s){try{return tglD(s).toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric"})}catch(e){return s}}
+function hariLagi(s){var n=Math.round((tglD(s)-tglD(isoToday()))/864e5);return n<=0?"hari ini":n==1?"besok":n+" hari lagi"}
+function byTgl(a,b){return String(a.tgl).localeCompare(String(b.tgl))}
+function az(k){return function(a,b){return String(a[k]).localeCompare(String(b[k]),"id")}}
+function Sheet(c){var S={c:c,data:null,rows:[],dirty:false,seq:0},P=c.id,el=$(P);
+var head='<tr><th class="rn">#</th>'+c.cols.map(function(k){return '<th style="'+(k.w?'width:'+k.w+';':'')+(k.t=="int"?'text-align:right':'')+'">'+k.label+'</th>'}).join("")+'<th style="width:44px"></th></tr>';
+el.className="card";
+el.innerHTML='<div class="jh"><div><h3 style="margin:0">'+c.title+'</h3><small style="color:var(--muted)">'+c.help+' Klik sel untuk mengetik, <b>Enter</b> untuk turun, atau salin dari Excel lalu tempel (<b>Ctrl+V</b>) di sel pertama.</small></div><span class="jst" id="'+P+'-st"></span></div>'+
+'<div class="tw" style="margin-top:12px"><table class="xl" style="min-width:'+(c.minw||480)+'px"><thead>'+head+'</thead><tbody id="'+P+'-b"></tbody>'+(c.foot?'<tfoot><tr id="'+P+'-f"></tr></tfoot>':'')+'</table></div>'+
+'<div class="jbar"><button class="btn btn-s" data-a="add">+ Tambah Baris</button>'+(c.sorts||[]).map(function(s,i){return '<button class="btn btn-s" data-a="sort" data-i="'+i+'">'+s.label+'</button>'}).join("")+'<span style="flex:1"></span><button class="btn btn-s" data-a="reset">Batalkan</button><button class="btn btn-p" data-a="save">💾 Simpan</button></div><p class="smsg" id="'+P+'-m"></p>';
+var B=$(P+"-b");
+S.list=function(){return S.data||c.demo};
+function nrow(o){var r={_id:++S.seq};c.cols.forEach(function(k){r[k.k]=o&&o[k.k]!=null?o[k.k]:(k.def||(k.t=="select"?k.opts[0]:""))});if(c.track&&o&&S.data)r._o=o[c.track];return r}
+function setD(v){S.dirty=v;var s=$(P+"-st");s.textContent=v?"● Ada perubahan belum disimpan":(S.data?"✓ Tersimpan":"Data contoh, belum disimpan");s.className="jst"+(v?" dirty":"")}
+function cell(r,i,k,j){var v=r[k.k],a=' data-r="'+i+'" data-c="'+j+'"';
+if(k.t=="select")return '<select'+a+'>'+k.opts.map(function(o){return '<option'+(o==v?' selected':'')+'>'+esc(o)+'</option>'}).join("")+'</select>';
+if(k.t=="date")return '<input type="date"'+a+' value="'+esc(v)+'">';
+return '<input'+a+(k.t=="int"?' class="num" inputmode="numeric"':k.t=="icon"?' class="icn"':'')+' value="'+esc(v)+'" placeholder="'+esc(k.ph||"")+'">'}
+function draw(){B.innerHTML=S.rows.length?S.rows.map(function(r,i){return '<tr><td class="rn">'+(i+1)+'</td>'+c.cols.map(function(k,j){return '<td>'+cell(r,i,k,j)+'</td>'}).join("")+'<td class="dl"><button class="x" data-del="'+i+'" title="Hapus baris">✕</button></td></tr>'}).join(""):'<tr><td colspan="'+(c.cols.length+2)+'" style="padding:14px;color:var(--muted)">Belum ada baris. Klik + Tambah Baris.</td></tr>';foot()}
+function foot(){if(c.foot)$(P+"-f").innerHTML=c.foot(S.rows)}
+function val(k,v){v=String(v==null?"":v);if(k.t=="int"){var d=v.replace(/\D/g,"");return d===""?"":parseInt(d,10)}if(k.t=="date")return parseTgl(v);if(k.t=="select"){var f=k.opts.filter(function(o){return o.toLowerCase()==v.trim().toLowerCase()})[0];return f||k.def||k.opts[0]}return v.trim()}
+function empty(r){return c.cols.every(function(k){return k.t=="select"||k.def||r[k.k]===""||r[k.k]==null})}
+function focus(i,j){var e=B.querySelector('[data-r="'+i+'"][data-c="'+j+'"]');if(e){e.focus();if(e.select&&e.type!="date")e.select()}}
+function add(){S.rows.push(nrow(null));setD(true);draw()}
+S.load=function(){S.rows=S.list().map(nrow);setD(false);draw()};
+function onEdit(e){var t=e.target,i=+t.dataset.r,j=+t.dataset.c;if(isNaN(i)||!S.rows[i])return;var k=c.cols[j];
+if(k.t=="int"){var d=t.value.replace(/\D/g,"");if(d!==t.value)t.value=d;S.rows[i][k.k]=d===""?"":parseInt(d,10)}else S.rows[i][k.k]=t.value;setD(true);foot()}
+B.addEventListener("input",onEdit);B.addEventListener("change",onEdit);
+B.onkeydown=function(e){var t=e.target,i=+t.dataset.r,j=+t.dataset.c;if(isNaN(i))return;var k=c.cols[j],simple=k.t!="select"&&k.t!="date";
+if(e.key=="Enter"){e.preventDefault();if(i==S.rows.length-1)add();focus(i+1,j)}
+else if(simple&&e.key=="ArrowDown"){e.preventDefault();focus(i+1,j)}
+else if(simple&&e.key=="ArrowUp"){e.preventDefault();focus(i-1,j)}};
+function isHeader(cs,j){return cs.some(function(v,m){var k=c.cols[j+m];if(!k)return false;v=v.trim();return v.toLowerCase()==k.label.toLowerCase()||((k.t=="int"||k.t=="date")&&/[a-z]/i.test(v)&&val(k,v)==="")})}
+B.onpaste=function(e){var t=e.target,i=+t.dataset.r,j=+t.dataset.c;if(isNaN(i))return;var tx=(e.clipboardData||window.clipboardData).getData("text")||"";if(!/[\t\n]/.test(tx.replace(/\s+$/,"")))return;e.preventDefault();
+var L=tx.replace(/\r/g,"").replace(/\n+$/,"").split("\n"),r=i;
+L.forEach(function(ln,n){var cs=ln.split("\t");if(n==0&&isHeader(cs,j))return;while(r>=S.rows.length)S.rows.push(nrow(null));cs.forEach(function(v,m){var k=c.cols[j+m];if(k)S.rows[r][k.k]=val(k,v)});r++});
+setD(true);draw();focus(i,j)};
+B.onclick=function(e){var d=e.target.dataset&&e.target.dataset.del;if(d===undefined)return;var i=+d,r=S.rows[i];if(r&&!empty(r)&&!confirm("Hapus baris "+(i+1)+"? (Belum permanen sampai Anda klik Simpan)"))return;S.rows.splice(i,1);setD(true);draw()};
+el.querySelector(".jbar").onclick=function(e){var b=e.target.closest("button");if(!b)return;var a=b.dataset.a;
+if(a=="add"){add();focus(S.rows.length-1,0)}
+else if(a=="sort"){S.rows.sort(c.sorts[+b.dataset.i].fn);setD(true);draw()}
+else if(a=="reset"){if(S.dirty&&!confirm("Batalkan semua perubahan yang belum disimpan?"))return;S.load();$(P+"-m").textContent=""}
+else if(a=="save")save(b)};
+function save(btn){var m=$(P+"-m");if(!canW||!db){m.textContent="Hanya pengurus/admin yang bisa menyimpan.";return}
+var rows=S.rows.filter(function(r){return !empty(r)}),err=c.validate?c.validate(rows):"";if(err){m.textContent="⚠️ "+err;return}
+var list=rows.map(function(r){var o={};c.cols.forEach(function(k){var v=r[k.k];o[k.k]=k.t=="int"?(+v||0):String(v==null?"":v).trim()});return o});
+m.textContent="Menyimpan...";btn.disabled=true;
+db.doc(c.doc).set({list:list,u:Date.now(),by:(auth&&auth.currentUser&&auth.currentUser.email)||""}).then(function(){return c.after?c.after(rows):""}).then(function(x){S.data=list;S.load();renderAll();m.textContent="✓ Tersimpan. Tampilan website sudah diperbarui."+(x||"")}).catch(function(){m.textContent="Gagal menyimpan: tidak punya izin, sesi berakhir, atau aturan Firebase belum dipasang."}).then(function(){btn.disabled=false})}
+S.snap=function(d){var x=d.exists?d.data():null;S.data=x&&Array.isArray(x.list)?x.list:null;renderAll();if(!S.dirty)S.load()};
+S.show=function(ok){if(!ok&&S.dirty)S.load()};
+SHEETS.push(S);S.load();return S}
+window.addEventListener("beforeunload",function(e){if(canW&&SHEETS.some(function(s){return s.dirty})){e.preventDefault();e.returnValue=""}});
+
+/* --- Data Jemaat Gereja --- */
+var SJ=Sheet({id:"jc",title:"Data Jemaat Gereja",help:'Tampil di Beranda sebagai "Sebaran Anggota per Jemaat Gereja". Mengganti nama di sini juga mengganti nama jemaat pada data anggota.',doc:"config/jemaat",track:"n",
+cols:[{k:"n",label:"Nama Jemaat Gereja",ph:"Nama jemaat gereja"},{k:"a",label:"Jumlah Anggota",t:"int",w:"160px",ph:"0"}],
+demo:[["Jemaat Imanuel Kendari",142],["Jemaat Efrata Mandonga",118],["Jemaat Bethel Kadia",96],["Jemaat Moria Wua-Wua",88],["Jemaat Sion Wanggudu",124],["Jemaat Getsemani Asera",64],["Jemaat Pniel Wiwirano",52]].map(function(x){return {n:x[0],a:x[1]}}),
+sorts:[{label:"Urut A–Z",fn:az("n")},{label:"Urut Terbanyak",fn:function(a,b){return (+b.a||0)-(+a.a||0)}}],
+foot:function(R){var t=R.reduce(function(s,x){return s+(+x.a||0)},0),n=R.filter(function(x){return String(x.n).trim()}).length;return '<td class="rn"></td><td>TOTAL <small style="color:var(--muted);font-weight:500">('+n+' jemaat)</small></td><td class="num">'+t.toLocaleString("id-ID")+'</td><td></td>'},
+validate:function(R){var seen={},err="";R.forEach(function(x){var k=String(x.n).trim().toLowerCase();if(err)return;if(!k)err="Ada baris berisi jumlah tetapi nama jemaatnya kosong.";else if(seen[k])err='Nama "'+String(x.n).trim()+'" tercatat dua kali.';seen[k]=1});return err},
+after:function(R){var ren=R.filter(function(x){return x._o&&x._o!==String(x.n).trim()}).map(function(x){return [x._o,String(x.n).trim()]});
+if(!ren.length||!live||!db.batch)return "";var ups=[];ren.forEach(function(p){live.forEach(function(m){if((m.j||"")==p[0])ups.push([m.id,p[1]])})});if(!ups.length)return "";
 var jobs=[];for(var i=0;i<ups.length;i+=400){var b=db.batch();ups.slice(i,i+400).forEach(function(u){b.update(db.doc("members/"+u[0]),{j:u[1]})});jobs.push(b.commit())}
-return Promise.all(jobs).then(function(){return ups.length})}
-$("jsv").onclick=function(){var m=$("jmsg");if(!canW||!db){m.textContent="Hanya pengurus/admin yang bisa menyimpan.";return}
-var rows=JG.filter(function(x){return String(x.n).trim()||(x.a!==""&&+x.a!==0)}),seen={},err="";
-rows.forEach(function(x){var k=String(x.n).trim().toLowerCase();if(err)return;if(!k)err="Ada baris berisi jumlah tetapi nama jemaatnya kosong.";else if(seen[k])err='Nama "'+x.n.trim()+'" tercatat dua kali.';seen[k]=1});
-if(err){m.textContent="⚠️ "+err;return}
-var list=rows.map(function(x){return {n:String(x.n).trim(),a:+x.a||0}}),ren=rows.filter(function(x){return x.o&&x.o!==String(x.n).trim()}).map(function(x){return [x.o,String(x.n).trim()]});
-m.textContent="Menyimpan...";$("jsv").disabled=true;
-db.doc("config/jemaat").set({list:list,u:Date.now(),by:(auth&&auth.currentUser&&auth.currentUser.email)||""}).then(function(){return jRename(ren)}).then(function(k){JS=list;jLoad();renderJemaat();m.textContent="✓ Tersimpan. Beranda sudah diperbarui."+(k?" "+k+" data anggota ikut diganti nama jemaatnya.":"")}).catch(function(){m.textContent="Gagal menyimpan: tidak punya izin, sesi berakhir, atau aturan Firebase belum dipasang."}).then(function(){$("jsv").disabled=false})};
-window.addEventListener("beforeunload",function(e){if(jDirty&&canW){e.preventDefault();e.returnValue=""}});
-renderJemaat();jLoad();
-/* ===== Tombol mode gelap/terang ===== */
-function curTheme(){var t=document.documentElement.getAttribute("data-theme");if(t)return t;return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
-function thmIcon(){var d=curTheme()=="dark";$("thm").textContent=d?"☀️":"🌙";$("thm").title=d?"Ganti ke mode terang":"Ganti ke mode gelap"}
-$("thm").onclick=function(){var n=curTheme()=="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("pkb-theme",n)}catch(e){}thmIcon()};
-thmIcon();
+return Promise.all(jobs).then(function(){return " "+ups.length+" data anggota ikut diganti nama jemaatnya."})}});
+function jList(){return SJ.list()}
+
+/* --- Kalender Kegiatan Tahunan --- */
+var KST=["Rencana","Terlaksana","Ditunda"];
+var SK=Sheet({id:"kc",title:"Kalender Kegiatan",help:'Tampil di halaman Kegiatan dan di Beranda (jumlah kegiatan tahun ini dan kegiatan berikutnya). Tanggal bisa ditempel dengan format 24/12/2026 atau 24 Desember 2026.',doc:"config/kalender",minw:860,
+cols:[{k:"tgl",label:"Tanggal",t:"date",w:"160px"},{k:"nama",label:"Nama Kegiatan",ph:"mis. Ibadah Natal PKB"},{k:"tempat",label:"Tempat / Jemaat",ph:"mis. Jemaat Imanuel Kendari",w:"220px"},{k:"ket",label:"Keterangan",ph:"opsional"},{k:"st",label:"Status",t:"select",opts:KST,w:"130px"}],
+demo:[["2026-01-18","Ibadah Awal Tahun PKB Klasis","Jemaat Imanuel Kendari","","Terlaksana"],["2026-02-21","Rapat Kerja PKB Klasis","Sekretariat Klasis","Penyusunan program tahunan","Terlaksana"],["2026-03-28","Aksi Diakonia Paskah","Jemaat Getsemani Asera","Bantuan sembako","Terlaksana"],["2026-04-25","Ibadah Syukur Paskah PKB","Jemaat Efrata Mandonga","","Terlaksana"],["2026-06-13","Pelatihan Usaha Tani","Jemaat Pniel Wiwirano","Bersama penyuluh pertanian","Terlaksana"],["2026-08-14","Retret Kaum Bapak Klasis","Jemaat Sion Wanggudu","14–16 Agustus","Terlaksana"],["2026-09-19","Bakti Sosial Lingkungan","Jemaat Moria Wua-Wua","","Terlaksana"],["2026-10-24","Lomba Paduan Suara PKB","Jemaat Bethel Kadia","","Terlaksana"],["2026-12-05","Ibadah Natal PKB Klasis","Jemaat Imanuel Kendari","","Rencana"],["2026-12-19","Aksi Diakonia Natal","Konawe Utara","Kunjungan keluarga prasejahtera","Rencana"],["2027-01-23","Ibadah Awal Tahun PKB Klasis","Jemaat Efrata Mandonga","","Rencana"]].map(function(x){return {tgl:x[0],nama:x[1],tempat:x[2],ket:x[3],st:x[4]}}),
+sorts:[{label:"Urut Tanggal",fn:function(a,b){return String(a.tgl||"9999").localeCompare(String(b.tgl||"9999"))}}],
+foot:function(R){var y=String(new Date().getFullYear()),n=R.filter(function(x){return String(x.tgl).slice(0,4)==y&&x.st!="Ditunda"}).length;return '<td class="rn"></td><td colspan="5">Kegiatan tahun '+y+': '+n+' <small style="color:var(--muted);font-weight:500">(tidak termasuk yang ditunda)</small></td><td></td>'},
+validate:function(R){var err="";R.forEach(function(x,i){if(err)return;if(!String(x.nama).trim())err="Baris "+(i+1)+": nama kegiatan kosong.";else if(!x.tgl)err='Baris "'+String(x.nama).trim()+'": tanggal belum diisi.'});return err}});
+
+/* --- Program Kegiatan Rutin --- */
+var SP=Sheet({id:"pc",title:"Program Kegiatan Rutin",help:'Tampil sebagai kartu di halaman Kegiatan. Ikon bisa diisi emoji, mis. 🙏 📖 🎁 🌾.',doc:"config/program",minw:720,
+cols:[{k:"ic",label:"Ikon",t:"icon",w:"70px",ph:"📌"},{k:"nama",label:"Nama Program",ph:"mis. Ibadah Bulanan",w:"220px"},{k:"ket",label:"Keterangan",ph:"Penjelasan singkat"},{k:"f",label:"Kali per Tahun",t:"int",w:"130px",ph:"0"}],
+demo:[["🙏","Ibadah Bulanan","Ibadah bersama kaum bapak, bergilir di setiap jemaat.",12],["📖","Pendalaman Alkitab","Kelompok kecil di tiap jemaat, dua kali sebulan.",24],["🏕️","Retret Kaum Bapak","Pembinaan rohani dan kebersamaan tingkat klasis.",1],["🎁","Aksi Diakonia","Bantuan sembako dan kunjungan keluarga, terutama Paskah dan Natal.",4],["🌾","Pelatihan Usaha Tani","Kerja sama dengan penyuluh pertanian setempat.",2],["🤲","Bakti Sosial","Gotong royong dan pelayanan masyarakat.",3]].map(function(x){return {ic:x[0],nama:x[1],ket:x[2],f:x[3]}}),
+validate:function(R){var err="";R.forEach(function(x,i){if(!err&&!String(x.nama).trim())err="Baris "+(i+1)+": nama program kosong."});return err}});
+
+/* --- Tampilan publik dari data di atas --- */
+function renderJemaat(){var L=SJ.list(),mx=Math.max.apply(null,L.map(function(x){return +x.a||0}).concat([1]));
+$("bars").innerHTML=L.length?L.map(function(x){return '<div class="jr"><div class="rh"><span>'+esc(x.n)+'</span><b>'+(+x.a||0)+'</b></div><div class="t"><div class="f" data-w="'+((+x.a||0)/mx*100)+'"></div></div></div>'}).join(""):'<p style="color:var(--muted)">Belum ada data jemaat.</p>';
+$("jnote").textContent=SJ.data?"":"Data contoh. Pengurus dapat mengisi data asli di Ruang Kerja.";
+var cur=$("fj").value;$("fj").innerHTML='<option value="">— Pilih jemaat gereja —</option>'+L.map(function(x){return '<option value="'+esc(x.n)+'">'+esc(x.n)+'</option>'}).join("");setJemaat(cur)}
+function renderStats(){var J=SJ.list(),tot=J.reduce(function(s,x){return s+(+x.a||0)},0),Y=String(new Date().getFullYear()),td=isoToday(),
+E=SK.list().filter(function(x){return x.tgl&&x.st!="Ditunda"}),ey=E.filter(function(x){return String(x.tgl).slice(0,4)==Y}),done=ey.filter(function(x){return x.st=="Terlaksana"}).length,
+nx=E.filter(function(x){return x.tgl>=td}).sort(byTgl)[0];
+$("hs").innerHTML='<div class="card stat"><b data-n="'+tot+'">0</b><span>Anggota terdaftar</span></div>'+
+'<div class="card stat"><b data-n="'+J.length+'">0</b><span>Jemaat gereja</span></div>'+
+'<a class="card stat" href="#kegiatan"><b data-n="'+ey.length+'">0</b><span>Kegiatan tahun '+Y+'</span><small class="ss">'+done+' sudah terlaksana</small></a>'+
+'<a class="card stat" href="#kegiatan"><b class="nx">'+(nx?tglPendek(nx.tgl):"—")+'</b><span>'+(nx?esc(nx.nama):"Belum ada agenda")+'</span><small class="ss">📅 Kegiatan berikutnya'+(nx?" · "+hariLagi(nx.tgl):"")+'</small></a>'}
+function renderProgram(){var L=SP.list();$("kg").innerHTML=L.length?L.map(function(k){return '<div class="card"><div class="ic">'+esc(k.ic||"📌")+'</div><h3>'+esc(k.nama)+'</h3><p>'+esc(k.ket)+'</p>'+(+k.f?'<p style="margin-top:10px;color:var(--em2);font-weight:600">'+k.f+'x per tahun</p>':'')+'</div>'}).join(""):'<p style="color:var(--muted)">Belum ada program.</p>'}
+var calY=new Date().getFullYear();
+function renderKal(){var td=isoToday(),nm=td.slice(0,7),L=SK.list().filter(function(x){return x.tgl&&String(x.tgl).slice(0,4)==String(calY)}).sort(byTgl),h="";
+for(var m=0;m<12;m++){var key=calY+"-"+pad(m+1),ev=L.filter(function(x){return String(x.tgl).slice(0,7)==key});
+h+='<div class="km'+(key==nm?' now':'')+(key<nm?' past':'')+'"><h4>'+BLN[m].charAt(0).toUpperCase()+BLN[m].slice(1)+(ev.length?' <small>'+ev.length+'</small>':'')+'</h4>'+(ev.length?ev.map(function(x){var c=x.st=="Ditunda"?"tunda":x.st=="Terlaksana"?"done":"plan";return '<div class="ev '+c+'" title="'+esc(tglPanjang(x.tgl)+(x.ket?" · "+x.ket:""))+'"><b>'+tglD(x.tgl).getDate()+'</b><span>'+esc(x.nama)+(x.tempat?'<small>📍 '+esc(x.tempat)+'</small>':'')+(x.ket?'<small>'+esc(x.ket)+'</small>':'')+'</span></div>'}).join(""):'<p class="kosong">Belum ada kegiatan</p>')+'</div>'}
+$("kal").innerHTML=h;$("kaly").textContent=calY;
+var up=SK.list().filter(function(x){return x.tgl&&x.tgl>=td&&x.st!="Ditunda"}).sort(byTgl).slice(0,3);
+$("kup").innerHTML=up.length?up.map(function(x){return '<div class="card up"><b>'+tglPendek(x.tgl)+'</b><div><h3>'+esc(x.nama)+'</h3><p>'+esc(tglPanjang(x.tgl))+(x.tempat?' · '+esc(x.tempat):'')+'</p><small>'+hariLagi(x.tgl)+'</small></div></div>'}).join(""):'<p style="color:var(--muted)">Belum ada agenda mendatang.</p>'}
+$("kp").onclick=function(){calY--;renderKal()};$("kn").onclick=function(){calY++;renderKal()};
+function renderAll(){renderJemaat();renderStats();renderProgram();renderKal();
+if($("p-beranda").classList.contains("on")){count();setTimeout(function(){document.querySelectorAll("#bars .f").forEach(function(f){f.style.width=f.dataset.w+"%"})},60)}}
+renderAll();
 lockForm();tb();
 var GD=[["🙏","Ibadah Bulanan","Contoh"],["🏕️","Retret Kaum Bapak","Contoh"],["🎁","Aksi Diakonia","Contoh"],["🌾","Pelatihan Usaha Tani","Contoh"]];
 function gr(){var h="";if(gal&&gal.length){h=gal.map(function(g){return '<div class="gi" data-u="'+esc(g.u)+'"><img src="'+esc(g.u)+'" alt="'+esc(g.c)+'" loading="lazy"><div class="c"><b>'+esc(g.c)+'</b><small>'+esc(g.d||"")+(canW?' · <span class="x" data-g="'+esc(g.id)+'">hapus</span>':'')+'</small></div></div>'}).join("")}else{h=GD.map(function(g){return '<div class="gi"><div class="ph2">'+g[0]+'</div><div class="c"><b>'+g[1]+'</b><small>'+g[2]+' · foto asli diunggah pengurus</small></div></div>'}).join("")}$("gl").innerHTML=h}
@@ -357,18 +441,18 @@ function initFb(){
 if(!window.firebase){bar("Firebase gagal dimuat. Mode demo: data contoh.");return}
 firebase.initializeApp(CFG);auth=firebase.auth();db=firebase.firestore();
 db.collection("gallery").orderBy("t","desc").limit(24).onSnapshot(function(s){gal=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});gr()},function(){});
-db.doc("config/jemaat").onSnapshot(function(d){var x=d.exists?d.data():null;JS=x&&Array.isArray(x.list)?x.list:null;renderJemaat();if(!jDirty)jLoad()},function(){});
+SHEETS.forEach(function(sh){db.doc(sh.c.doc).onSnapshot(sh.snap,function(){})});
 db.collection("posts").orderBy("t","desc").limit(30).onSnapshot(function(s){posts=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});pr()},function(){});
 $("gu").onclick=function(){var f=$("gf").files[0];if(!f||!canW)return;$("ok3").textContent="Memproses...";$("ok3").style.display="inline";comp(f,function(u){var t=Date.now();db.doc("gallery/g"+t).set({u:u,c:$("gc").value.trim()||"Kegiatan PKB",d:$("gd").value.trim(),t:t}).then(function(){$("ok3").textContent="Foto ditambahkan.";$("gf").value="";$("gc").value="";$("gd").value=""}).catch(function(){$("ok3").textContent="Gagal: akun bukan pengurus."})})};
 function login(){auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){if(e.code!="auth/popup-closed-by-user")alert("Login gagal: "+e.code)})}
 function acct(u,role){var a=$("acct");if(!u){a.innerHTML='<button class="lgb" id="lg">Masuk</button>';$("lg").onclick=login;return}
-var n=u.displayName||u.email||"?";a.innerHTML='<button class="av" id="avb" aria-label="Akun">'+(u.photoURL?'<img src="'+esc(u.photoURL)+'" alt="" referrerpolicy="no-referrer">':esc(n.charAt(0).toUpperCase()))+'</button><div class="dd" id="dd"><b>'+esc(u.displayName||"Pengguna")+'</b><small>'+esc(u.email||"")+'</small><span>'+(role||"Memeriksa...")+'</span><small class="sess" id="sesi"></small><button id="lo">Keluar</button></div>';
-$("avb").onclick=function(e){e.stopPropagation();$("dd").classList.toggle("on")};$("lo").onclick=function(){auth.signOut()}}
+var n=u.displayName||u.email||"?";a.innerHTML='<button class="av" id="avb" aria-label="Akun">'+(u.photoURL?'<img src="'+esc(u.photoURL)+'" alt="" referrerpolicy="no-referrer">':esc(n.charAt(0).toUpperCase()))+'</button><div class="dd" id="dd"><b>'+esc(u.displayName||"Pengguna")+'</b><small>'+esc(u.email||"")+'</small><span>'+(role||"Memeriksa...")+'</span><small class="sess" id="sesi"></small>'+(role=="Admin"||role=="Pengurus"?'<a href="#kerja" class="ddl">🛠️ Buka Ruang Kerja</a>':'')+'<button id="lo">Keluar</button></div>';
+$("avb").onclick=function(e){e.stopPropagation();$("stp").classList.remove("on");$("dd").classList.toggle("on")};$("lo").onclick=function(){auth.signOut()}}
 document.addEventListener("click",function(e){var d=$("dd");if(d&&!d.contains(e.target))d.classList.remove("on")});
 auth.onAuthStateChanged(function(u){
-if(unsubM){unsubM();unsubM=null}if(unsubA){unsubA();unsubA=null}$("ad").style.display="none";
+if(unsubM){unsubM();unsubM=null}if(unsubA){unsubA();unsubA=null}$("tabadm").style.display="none";if(curTab=="pengurus")tab("anggota");
 canW=false;live=null;$("up").style.display="none";$("pe").style.display="none";lockForm();acct(u);
-if(!u){sesiEnd=0;bar(sesiHabis?'⏱️ Sesi Anda sudah berakhir (batas 2 jam). Silakan klik <b>Masuk</b> lagi.':'Belum masuk. Data di bawah adalah contoh. Klik <b>Masuk</b> di pojok kanan atas.');sesiHabis=false;tb();gr();return}
+if(!u){sesiEnd=0;bar(sesiHabis?'⏱️ Sesi Anda sudah berakhir (batas 2 jam). Silakan klik <b>Masuk</b> lagi.':'🔒 Ruang Kerja khusus pengurus dan admin. Klik <b>Masuk</b> di pojok kanan atas dengan akun Google yang terdaftar.');sesiHabis=false;tb();gr();return}
 mulaiSesi(u);
 bar("Memeriksa akses untuk "+esc(u.email||"")+"...");
 db.doc("admins/"+(u.email||"").toLowerCase()).get().then(function(d){
@@ -377,7 +461,7 @@ if(!d.exists)throw 0;
 var ad=(d.data().peran||"")=="admin";canW=true;
 bar(ad?"Masuk sebagai admin: Anda bisa mengelola konten dan daftar pengurus.":"Masuk sebagai pengurus: Anda bisa mengelola berita, galeri, dan data anggota.");
 acct(u,ad?"Admin":"Pengurus");lockForm();cekSesi();$("up").style.display="block";$("pe").style.display="block";
-if(ad){$("ad").style.display="block";startAdm(u)}
+if(ad){$("tabadm").style.display="";startAdm(u)}
 unsubM=db.collection("members").onSnapshot(function(s){live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});tb();gr()},function(){live=null;tb();gr()});
 tb();gr()
 }).catch(function(){if(auth.currentUser!==u)return;canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");lockForm();cekSesi();tb();gr()})
@@ -407,11 +491,8 @@ chime:function(i){if(!on)return;var b=scale[(i||0)%scale.length];tone(b,0,0.35,"
 ok:function(){if(!on)return;tone(659.25,0,0.15,"sine",0.16);tone(987.77,0.1,0.3,"sine",0.16)},
 close:function(){if(!on)return;tone(440,0,0.12,"triangle",0.1);tone(330,0.06,0.15,"triangle",0.08)}
 }})();
-function sndIcon(){var b=$("snd");b.textContent=SFX.on()?"🔊":"🔇";b.setAttribute("aria-label",SFX.on()?"Suara aktif":"Suara mati")}
-sndIcon();
-$("snd").onclick=function(){SFX.set(!SFX.on());sndIcon();SFX.ok()};
 document.addEventListener("click",function(e){
-var t=e.target;if(!t.closest||t.closest("#snd"))return;
+var t=e.target;if(!t.closest||t.closest("#sndc,.sw"))return;
 var ic=t.closest(".ic,.logo i,.ph2");
 if(ic){var all=Array.prototype.slice.call(document.querySelectorAll(".ic,.ph2"));SFX.chime(all.indexOf(ic));ic.classList.remove("pop");void ic.offsetWidth;ic.classList.add("pop");return}
 if(t.closest("#rdx")||t.id=="rd"||t.closest("#lb")||t.closest(".x:not(.ed)")){SFX.close();return}
@@ -419,6 +500,20 @@ if(t.closest("#pf,#gu,#add,#sd,#aa")){SFX.ok();return}
 if(t.matches&&t.matches("input:not([type=file]):not([type=checkbox]),textarea,select"))return;
 if(t.closest("a,button,.gi,.card,input[type=file]"))SFX.tap();
 },true);
+/* ===== Pengaturan ⚙️ (tema & suara) ===== */
+function themePref(){try{return localStorage.getItem("pkb-theme")||"auto"}catch(e){return "auto"}}
+function setTheme(t){var r=document.documentElement;if(t=="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",t);try{if(t=="auto")localStorage.removeItem("pkb-theme");else localStorage.setItem("pkb-theme",t)}catch(e){}stgSync()}
+function stgSync(){var t=themePref();document.querySelectorAll("#thm [data-t]").forEach(function(b){b.classList.toggle("on",b.dataset.t==t)});$("sndc").checked=SFX.on()}
+$("thm").onclick=function(e){var b=e.target.closest("[data-t]");if(b)setTheme(b.dataset.t)};
+$("sndc").onchange=function(){SFX.set(this.checked);if(this.checked)SFX.ok()};
+$("stb").onclick=function(e){e.stopPropagation();var d=$("dd");if(d)d.classList.remove("on");$("stp").classList.toggle("on")};
+document.addEventListener("click",function(e){var p=$("stp");if(p&&!p.contains(e.target)&&!$("stb").contains(e.target))p.classList.remove("on")});
+stgSync();
+/* ===== Tab Ruang Kerja ===== */
+var curTab="anggota";
+function tab(n){curTab=n;document.querySelectorAll("#tabs [data-tab]").forEach(function(b){b.classList.toggle("on",b.dataset.tab==n)});document.querySelectorAll(".tp").forEach(function(p){p.classList.toggle("on",p.dataset.p==n)});try{localStorage.setItem("pkb-tab",n)}catch(e){}}
+$("tabs").onclick=function(e){var b=e.target.closest("[data-tab]");if(b)tab(b.dataset.tab)};
+try{var _tb=localStorage.getItem("pkb-tab");if(_tb&&_tb!="pengurus"&&document.querySelector('.tp[data-p="'+_tb+'"]'))tab(_tb)}catch(e){}
 initFb();
 window.addEventListener("hashchange",route);route();
 </script>
