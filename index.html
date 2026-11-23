@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Portal PKB Klasis Kendari-Konawe Utara</title>
+<script>try{var _t=localStorage.getItem("pkb-theme");if(_t)document.documentElement.setAttribute("data-theme",_t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -67,6 +68,20 @@ input:focus,textarea:focus{outline:2px solid var(--em);border-color:transparent}
 @media(max-width:720px){.acct{margin-left:auto;margin-right:8px}}
 .rd{display:none;position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.65);overflow:auto;padding:16px}.rd.on{display:block}.rd .in{max-width:760px;margin:16px auto;background:var(--surface);border-radius:16px;padding:26px;position:relative}.rd .in img{width:100%;border-radius:12px;margin:10px 0}.rd h2{padding-right:30px}.rd p{margin:0 0 14px}.rdx{position:absolute;right:14px;top:10px;background:none;border:0;font-size:24px;color:var(--muted);cursor:pointer}.pc small{margin-top:2px}
 footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px;font-size:14px}
+.snd{margin-left:10px;background:none;border:1px solid var(--line);border-radius:99px;width:38px;height:38px;font-size:17px;cursor:pointer;color:var(--text);display:grid;place-items:center;flex:none}
+.snd:hover{border-color:var(--em)}
+.ic,.logo i{cursor:pointer;user-select:none}
+.pop{animation:pop .45s ease}
+@keyframes pop{0%{transform:scale(1)}35%{transform:scale(1.28) rotate(-8deg)}65%{transform:scale(.92) rotate(5deg)}100%{transform:scale(1)}}
+@media(max-width:720px){.snd{margin-left:0;margin-right:8px}}
+.mgrid{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 320px}@media(max-width:900px){.mgrid{grid-template-columns:1fr}}
+.tbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn-s{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 16px;font-size:14px}.btn-s:hover{border-color:var(--em);color:var(--em2)}
+.lock{background:rgba(239,68,68,.08);border:1px dashed #ef4444;border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:12px}
+fieldset:disabled input,fieldset:disabled select{opacity:.55;cursor:not-allowed}fieldset:disabled .btn{opacity:.5;cursor:not-allowed}
+.act{white-space:nowrap}.act .x{font-size:13px;padding:2px 4px}.act .ed{color:var(--em2)}
+tr.editing td{background:rgba(16,185,129,.12)}
+.sess{font-size:12px;color:var(--muted);display:block;margin-top:4px}
 </style>
 </head>
 <body>
@@ -74,6 +89,8 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 <a class="logo" href="#beranda"><i>PKB</i><span>PKB Klasis Kendari-Konawe Utara</span></a>
 <nav id="nv"><a href="#beranda">Beranda</a><a href="#kegiatan">Kegiatan</a><a href="#berita">Berita</a><a href="#galeri">Galeri</a><a href="#dashboard">Dashboard</a><a href="#tentang">Tentang &amp; Kontak</a></nav>
 <div class="acct" id="acct"></div>
+<button class="snd" id="thm" aria-label="Ganti tema" title="Mode gelap/terang">🌙</button>
+<button class="snd" id="snd" aria-label="Suara aktif" title="Matikan/nyalakan suara">🔊</button>
 <button class="burger" id="bg" aria-label="Menu">☰</button>
 </div></header>
 
@@ -129,11 +146,16 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 <div class="wrap sec">
 <div class="note" id="auth">Memeriksa status masuk...</div>
 <div class="card" id="ad" style="display:none;margin-bottom:22px"><h3>Kelola Pengurus</h3><p style="margin-bottom:12px">Tambahkan email Google. Pengurus mengelola konten (berita, galeri, anggota). Admin juga bisa mengelola daftar ini.</p><div class="two" style="gap:10px"><input id="ae" type="email" placeholder="email@gmail.com"><input id="an" placeholder="Nama (opsional)"></div><select id="ap"><option value="pengurus">Pengurus (kelola konten)</option><option value="admin">Admin (kelola konten dan pengurus)</option></select><button class="btn btn-p" id="aa">Tambah Pengurus</button> <span class="ok" id="ok5"></span><div class="tw" style="margin-top:14px"><table><thead><tr><th>Email</th><th>Nama</th><th>Peran</th><th></th></tr></thead><tbody id="at"></tbody></table></div></div>
-<div class="two">
-<div><input id="q" placeholder="Cari nama atau ranting..."><div class="tw"><table><thead><tr><th>Nama</th><th>Ranting</th><th>Bidang</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
-<div class="card"><h3>Form Anggota Baru</h3>
-<input id="fn" placeholder="Nama lengkap"><select id="fr"></select><input id="fb" placeholder="Bidang pelayanan">
-<button class="btn btn-p" id="add">Tambah ke Tabel</button><p class="ok" id="ok1">Data ditambahkan (hanya di tampilan ini).</p></div>
+<div class="mgrid">
+<div style="min-width:0"><div class="tbar"><input id="q" placeholder="Cari nama, ranting, jemaat, atau No. HP..." style="margin:0;flex:1;min-width:200px"><div id="exp" style="display:none;gap:8px"><label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:4px;white-space:nowrap"><input type="checkbox" id="xhp" checked style="width:auto;margin:0"> sertakan No. HP</label><button class="btn btn-s" id="xx">⬇ Excel</button><button class="btn btn-s" id="xp">⬇ PDF</button></div></div>
+<small id="qc" style="color:var(--muted);display:block;margin:8px 0"></small>
+<div class="tw"><table style="min-width:760px"><thead><tr><th>Nama</th><th>Ranting</th><th>Jemaat</th><th>No. HP</th><th>Bidang</th><th>Status</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></div>
+<div class="card" id="mf"><h3 id="mft">Form Anggota Baru</h3>
+<div class="lock" id="mlk">🔒 Form ini hanya untuk pengurus/admin. Silakan <b>Masuk</b> dengan akun pengurus.</div>
+<fieldset id="mfs" disabled style="border:0;padding:0;margin:0">
+<input id="fn" placeholder="Nama lengkap"><select id="fr"></select><input id="fj" placeholder="Jemaat, mis. Jemaat Imanuel Mandonga"><input id="fh" type="tel" inputmode="tel" placeholder="No. HP, mis. 0812xxxxxxxx"><input id="fb" placeholder="Bidang pelayanan"><select id="fs"><option>Aktif</option><option>Nonaktif</option></select>
+<button class="btn btn-p" id="add">Tambah Anggota</button> <button class="btn btn-s" id="fcx" style="display:none">Batal ubah</button></fieldset>
+<p class="ok" id="ok1"></p></div>
 </div></div>
 </section>
 
@@ -159,7 +181,7 @@ footer{background:var(--hero1);color:#94a3b8;text-align:center;padding:28px 20px
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 var R=[["Kendari Kota",142],["Mandonga",118],["Kadia",96],["Wua-Wua",88],["Konawe Utara",124],["Asera",64],["Wiwirano",52]];
-var M=[["Yohanis Lalang","Kendari Kota","Kerohanian","Aktif"],["Markus Tiranda","Mandonga","Sosial","Aktif"],["Daud Rante","Kadia","Ekonomi","Aktif"],["Petrus Maku","Konawe Utara","Organisasi","Aktif"],["Samuel Bunga","Asera","Kerohanian","Aktif"],["Yusuf Sampe","Wua-Wua","Sosial","Nonaktif"],["Elias Padang","Wiwirano","Ekonomi","Aktif"],["Andarias Tondok","Mandonga","Organisasi","Aktif"]];
+var M=[["Yohanis Lalang","Kendari Kota","Jemaat Imanuel Kendari","081200000101","Kerohanian","Aktif"],["Markus Tiranda","Mandonga","Jemaat Efrata Mandonga","081200000102","Sosial","Aktif"],["Daud Rante","Kadia","Jemaat Bethel Kadia","081200000103","Ekonomi","Aktif"],["Petrus Maku","Konawe Utara","Jemaat Sion Wanggudu","081200000104","Organisasi","Aktif"],["Samuel Bunga","Asera","Jemaat Getsemani Asera","081200000105","Kerohanian","Aktif"],["Yusuf Sampe","Wua-Wua","Jemaat Moria Wua-Wua","081200000106","Sosial","Nonaktif"],["Elias Padang","Wiwirano","Jemaat Pniel Wiwirano","081200000107","Ekonomi","Aktif"],["Andarias Tondok","Mandonga","Jemaat Efrata Mandonga","081200000108","Organisasi","Aktif"]];
 var K=[["🙏","Ibadah Bulanan","Ibadah bersama seluruh ranting setiap bulan.","12"],["📖","Pendalaman Alkitab","Kelompok kecil rutin tiap pekan.","48"],["🏕️","Retret Kaum Bapak","Pembinaan rohani dan kebersamaan.","2"],["🎁","Aksi Diakonia","Bantuan sembako dan kunjungan keluarga.","9"],["🌾","Pelatihan Usaha Tani","Kerja sama dengan penyuluh pertanian.","4"],["🤲","Bakti Sosial","Gotong royong dan pelayanan masyarakat.","6"]];
 var T=[["Agustus 2026","Retret Kaum Bapak Klasis","Dihadiri perwakilan seluruh ranting."],["Juni 2026","Pelatihan Usaha Tani","Pelatihan budidaya bagi anggota."],["Maret 2026","Aksi Diakonia Paskah","Penyaluran bantuan ke keluarga prasejahtera."]];
 function $(i){return document.getElementById(i)}
@@ -170,20 +192,77 @@ $("bars").innerHTML=R.map(function(r){return '<div class="r"><span class="n">'+r
 $("kg").innerHTML=K.map(function(k){return '<div class="card"><div class="ic">'+k[0]+'</div><h3>'+k[1]+'</h3><p>'+k[2]+'</p><p style="margin-top:10px;color:var(--em2);font-weight:600">'+k[3]+'x per tahun</p></div>'}).join("");
 $("tl").innerHTML=T.map(function(t){return '<div class="it"><small>'+t[0]+'</small><h3 style="margin:2px 0;color:var(--navy)">'+t[1]+'</h3><p style="margin:0;color:var(--muted)">'+t[2]+'</p></div>'}).join("");
 $("fr").innerHTML=R.map(function(r){return '<option>'+r[0]+'</option>'}).join("");
-function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
-function tb(){var q=$("q").value.toLowerCase();$("tb").innerHTML=M.filter(function(m){return m.join(" ").toLowerCase().indexOf(q)>-1}).map(function(m){return '<tr><td>'+esc(m[0])+'</td><td>'+esc(m[1])+'</td><td>'+esc(m[2])+'</td><td style="color:'+(m[3]=="Aktif"?"var(--em2)":"var(--muted)")+';font-weight:600">'+m[3]+'</td></tr>'}).join("")}
-$("q").oninput=tb;tb();
-$("add").onclick=function(){var n=$("fn").value.trim();if(!n)return;M.unshift([n,$("fr").value,$("fb").value.trim()||"Umum","Aktif"]);$("fn").value="";$("fb").value="";tb();$("ok1").style.display="block"};
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 $("sd").onclick=function(){if(!$("mn").value.trim()||!$("mm").value.trim())return;$("mn").value="";$("me").value="";$("mm").value="";$("ok2").style.display="block"};
 $("bg").onclick=function(){$("nv").classList.toggle("open")};
 function count(){document.querySelectorAll("[data-n]").forEach(function(e){var t=+e.dataset.n,s=0,st=t/40;var iv=setInterval(function(){s+=st;if(s>=t){s=t;clearInterval(iv)}e.textContent=Math.round(s)},25)})}
 function route(){var h=(location.hash||"#beranda").slice(1);if(!$("p-"+h))h="beranda";document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id=="p-"+h)});document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")=="#"+h)});$("nv").classList.remove("open");window.scrollTo(0,0);if(h=="beranda"){count();setTimeout(function(){document.querySelectorAll(".f").forEach(function(f){f.style.width=f.dataset.w+"%"})},100)}}
-var db=null,canW=false,live=null,gal=null;
-function rows(){return live?live:M.map(function(m,i){return {id:"d"+i,n:m[0],r:m[1],b:m[2],s:m[3]}})}
-tb=function(){var q=$("q").value.toLowerCase();$("tb").innerHTML=rows().filter(function(m){return (m.n+" "+m.r+" "+m.b).toLowerCase().indexOf(q)>-1}).map(function(m){return '<tr><td>'+esc(m.n)+'</td><td>'+esc(m.r)+'</td><td>'+esc(m.b)+'</td><td style="color:'+(m.s=="Aktif"?"var(--em2)":"var(--muted)")+';font-weight:600">'+esc(m.s)+'</td><td>'+(live&&canW?'<button class="x" data-d="'+esc(m.id)+'" title="Hapus">✕</button>':'')+'</td></tr>'}).join("")};
-$("q").oninput=tb;tb();
-$("tb").onclick=function(e){var d=e.target.dataset&&e.target.dataset.d;if(d&&db&&confirm("Hapus anggota ini?"))db.doc("members/"+d).delete().catch(function(){alert("Gagal menghapus.")})};
-$("add").onclick=function(){var n=$("fn").value.trim();if(!n)return;var o={n:n,r:$("fr").value,b:$("fb").value.trim()||"Umum",s:"Aktif",t:Date.now()};if(db&&canW){db.doc("members/m"+o.t).set(o).then(function(){$("ok1").textContent="Tersimpan permanen.";$("ok1").style.display="block"}).catch(function(){alert("Tidak punya izin menulis.")})}else{M.unshift([o.n,o.r,o.b,o.s]);tb();$("ok1").textContent="Mode demo: data hanya di tampilan ini.";$("ok1").style.display="block"}$("fn").value="";$("fb").value=""};
+var db=null,canW=false,live=null,gal=null,editM=null;
+function pad(n){return (n<10?"0":"")+n}
+function rows(){return live?live:M.map(function(m,i){return {id:"d"+i,n:m[0],r:m[1],j:m[2],hp:m[3],b:m[4],s:m[5]}})}
+function filt(){var q=$("q").value.toLowerCase().trim();return rows().filter(function(m){return [m.n,m.r,m.j,m.hp,m.b,m.s].join(" ").toLowerCase().indexOf(q)>-1})}
+function tb(){var L=filt(),all=rows().length,act=!!(live&&canW);
+$("qc").textContent=L.length+" dari "+all+" anggota"+(live?"":" · data contoh");
+$("tb").innerHTML=L.length?L.map(function(m){return '<tr'+(editM&&editM==m.id?' class="editing"':'')+'><td><b>'+esc(m.n)+'</b></td><td>'+esc(m.r)+'</td><td>'+esc(m.j||"-")+'</td><td>'+(m.hp?'<a href="tel:'+esc(String(m.hp).replace(/[^\d+]/g,""))+'" style="color:var(--em2)">'+esc(m.hp)+'</a>':'-')+'</td><td>'+esc(m.b)+'</td><td style="color:'+(m.s=="Aktif"?"var(--em2)":"var(--muted)")+';font-weight:600">'+esc(m.s)+'</td><td class="act">'+(act?'<button class="x ed" data-me="'+esc(m.id)+'" title="Ubah">✎ ubah</button> <button class="x" data-d="'+esc(m.id)+'" title="Hapus">✕</button>':'')+'</td></tr>'}).join(""):'<tr><td colspan="7" style="color:var(--muted)">Tidak ada data yang cocok.</td></tr>'}
+$("q").oninput=tb;
+function setRanting(v){var s=$("fr");if(v&&!Array.prototype.some.call(s.options,function(o){return o.value==v})){var o=document.createElement("option");o.textContent=v;s.appendChild(o)}s.value=v||s.options[0].value}
+function mform(m){editM=m?m.id:null;$("fn").value=m?m.n||"":"";setRanting(m?m.r:"");$("fj").value=m?m.j||"":"";$("fh").value=m?m.hp||"":"";$("fb").value=m?m.b||"":"";$("fs").value=m&&m.s=="Nonaktif"?"Nonaktif":"Aktif";
+$("add").textContent=m?"Simpan Perubahan":"Tambah Anggota";$("mft").textContent=m?"Ubah Data Anggota":"Form Anggota Baru";$("fcx").style.display=m?"inline-block":"none";tb()}
+function lockForm(){var ok=!!(canW&&db);$("mfs").disabled=!ok;$("mlk").style.display=ok?"none":"block";$("exp").style.display=ok?"flex":"none";if(!ok){$("ok1").style.display="none";if(editM)mform(null)}}
+$("fcx").onclick=function(){mform(null);$("ok1").style.display="none"};
+$("tb").onclick=function(e){var t=e.target,d=t.dataset&&t.dataset.d,me=t.dataset&&t.dataset.me;
+if(me){var m=rows().filter(function(x){return x.id==me})[0];if(m){mform(m);$("ok1").style.display="none";$("mf").scrollIntoView({behavior:"smooth",block:"center"});$("fn").focus({preventScroll:true})}return}
+if(d&&db&&canW&&confirm("Hapus anggota ini?")){if(editM==d)mform(null);db.doc("members/"+d).delete().catch(function(){alert("Gagal menghapus: tidak punya izin atau sesi berakhir.")})}};
+$("add").onclick=function(){var m=$("ok1");m.style.display="block";
+if(!canW||!db){m.textContent="Hanya pengurus/admin yang bisa mengisi form ini.";return}
+var n=$("fn").value.trim(),hp=$("fh").value.replace(/[\s.\-()]/g,"");
+if(!n){m.textContent="Nama lengkap wajib diisi.";$("fn").focus();return}
+if(hp&&!/^(\+62|62|0)8\d{7,12}$/.test(hp)){m.textContent="No. HP tidak valid. Contoh: 081234567890";$("fh").focus();return}
+var o={n:n,r:$("fr").value,j:$("fj").value.trim(),hp:hp,b:$("fb").value.trim()||"Umum",s:$("fs").value,u:Date.now()},was=editM,p;
+if(was){p=db.doc("members/"+was).update(o)}else{o.t=o.u;p=db.doc("members/m"+o.t).set(o)}
+m.textContent="Menyimpan...";$("add").disabled=true;
+p.then(function(){m.textContent=was?"Perubahan tersimpan.":"Anggota ditambahkan.";mform(null)}).catch(function(){m.textContent="Gagal menyimpan: tidak punya izin atau sesi berakhir."}).then(function(){$("add").disabled=false})};
+/* ===== Ekspor Excel & PDF ===== */
+var ORG="PKB Klasis Kendari-Konawe Utara";
+function stamp(){var d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+function rekap(L){var o={};L.forEach(function(m){var k=m.r||"-";o[k]=o[k]||{a:0,n:0};o[k][m.s=="Aktif"?"a":"n"]++});var ks=Object.keys(o).sort(),ta=0,tn=0;var r=ks.map(function(k){ta+=o[k].a;tn+=o[k].n;return [k,o[k].a,o[k].n,o[k].a+o[k].n]});return {rows:r,tot:["TOTAL",ta,tn,ta+tn]}}
+function withHp(){return $("xhp").checked}
+function loadJs(src,ok,err){var s=document.createElement("script");s.src=src;s.onload=ok;s.onerror=err;document.head.appendChild(s)}
+function csvOut(L){var h=withHp(),hdr=["No","Nama","Ranting","Jemaat"].concat(h?["No. HP"]:[]).concat(["Bidang","Status"]);
+function c(v){return '"'+String(v==null?"":v).replace(/"/g,'""')+'"'}
+var lines=[hdr.map(c).join(";")].concat(L.map(function(m,i){return [i+1,m.n,m.r,m.j||""].concat(h?[m.hp?'="'+m.hp+'"':""]:[]).concat([m.b,m.s]).map(function(v,k){return h&&k==4&&m.hp?v:c(v)}).join(";")}));
+var b=new Blob(["﻿"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="Data-Anggota-PKB-"+stamp()+".csv";document.body.appendChild(a);a.click();a.remove();
+alert("Pustaka Excel gagal dimuat, jadi data diunduh sebagai CSV (bisa dibuka di Excel).")}
+$("xx").onclick=function(){var L=filt(),btn=this;if(!L.length){alert("Tidak ada data untuk diekspor.");return}
+function go(){btn.textContent="⬇ Excel";var h=withHp(),hdr=["No","Nama","Ranting","Jemaat"].concat(h?["No. HP"]:[]).concat(["Bidang","Status"]);
+var a=[["DATA ANGGOTA "+ORG.toUpperCase()],["Tanggal cetak: "+fd(Date.now())+" · Jumlah: "+L.length+" anggota"+($("q").value.trim()?" · Filter: "+$("q").value.trim():"")],[],hdr].concat(L.map(function(m,i){return [i+1,m.n,m.r,m.j||""].concat(h?[m.hp||""]:[]).concat([m.b,m.s])}));
+var ws=XLSX.utils.aoa_to_sheet(a);ws["!cols"]=[{wch:5},{wch:28},{wch:16},{wch:28}].concat(h?[{wch:16}]:[]).concat([{wch:16},{wch:10}]);ws["!merges"]=[{s:{r:0,c:0},e:{r:0,c:hdr.length-1}},{s:{r:1,c:0},e:{r:1,c:hdr.length-1}}];
+var rk=rekap(L),ws2=XLSX.utils.aoa_to_sheet([["REKAP ANGGOTA PER RANTING"],[],["Ranting","Aktif","Nonaktif","Jumlah"]].concat(rk.rows).concat([rk.tot]));ws2["!cols"]=[{wch:20},{wch:10},{wch:10},{wch:10}];
+var wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Anggota");XLSX.utils.book_append_sheet(wb,ws2,"Rekap Ranting");XLSX.writeFile(wb,"Data-Anggota-PKB-"+stamp()+".xlsx")}
+if(window.XLSX){go();return}btn.textContent="Menyiapkan...";
+loadJs("https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js",go,function(){btn.textContent="⬇ Excel";csvOut(L)})};
+$("xp").onclick=function(){var L=filt();if(!L.length){alert("Tidak ada data untuk diekspor.");return}
+var h=withHp(),rk=rekap(L),q=$("q").value.trim(),tgl=fd(Date.now());
+var css='@page{size:A4;margin:15mm}body{font-family:Arial,sans-serif;color:#111;font-size:11pt;margin:0}.kop{text-align:center;border-bottom:3px double #000;padding-bottom:8px;margin-bottom:14px}.kop h1{font-size:15pt;margin:0}.kop p{margin:2px 0;font-size:10pt}h2{font-size:12pt;margin:16px 0 6px}table{border-collapse:collapse;width:100%;font-size:10pt}th,td{border:1px solid #444;padding:4px 6px;text-align:left}th{background:#e8eef7}td.n,th.n{text-align:center}tr{page-break-inside:avoid}.meta{font-size:10pt;margin:0 0 6px}.ttd{display:flex;justify-content:space-between;margin-top:36px;page-break-inside:avoid}.ttd div{text-align:center;width:45%}.ttd .sp{height:64px}.bar{background:#0f2547;color:#fff;padding:10px 14px;font-size:14px;display:flex;gap:10px;align-items:center;justify-content:space-between}.bar button{background:#10b981;border:0;border-radius:6px;padding:8px 14px;font-weight:700;cursor:pointer}.doc{padding:16px}@media print{.bar{display:none}.doc{padding:0}}';
+var html='<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Laporan-Data-Anggota-PKB-'+stamp()+'</title><style>'+css+'</style></head><body>'+
+'<div class="bar"><span>Pada jendela cetak, pilih tujuan <b>"Simpan sebagai PDF"</b>.</span><button onclick="window.print()">Cetak / Simpan PDF</button></div><div class="doc">'+
+'<div class="kop"><h1>PERSEKUTUAN KAUM BAPAK (PKB)</h1><h1>KLASIS KENDARI-KONAWE UTARA</h1><p>Kendari, Sulawesi Tenggara</p></div>'+
+'<h2 style="text-align:center;margin-top:0">LAPORAN DATA ANGGOTA</h2><p class="meta">Tanggal: '+tgl+' &nbsp;·&nbsp; Jumlah: '+L.length+' anggota'+(q?' &nbsp;·&nbsp; Filter: '+esc(q):'')+'</p>'+
+'<h2>A. Rekap per Ranting</h2><table><thead><tr><th class="n">No</th><th>Ranting</th><th class="n">Aktif</th><th class="n">Nonaktif</th><th class="n">Jumlah</th></tr></thead><tbody>'+
+rk.rows.map(function(r,i){return '<tr><td class="n">'+(i+1)+'</td><td>'+esc(r[0])+'</td><td class="n">'+r[1]+'</td><td class="n">'+r[2]+'</td><td class="n">'+r[3]+'</td></tr>'}).join("")+
+'<tr><th></th><th>TOTAL</th><th class="n">'+rk.tot[1]+'</th><th class="n">'+rk.tot[2]+'</th><th class="n">'+rk.tot[3]+'</th></tr></tbody></table>'+
+'<h2>B. Daftar Anggota</h2><table><thead><tr><th class="n">No</th><th>Nama</th><th>Ranting</th><th>Jemaat</th>'+(h?'<th>No. HP</th>':'')+'<th>Bidang</th><th>Status</th></tr></thead><tbody>'+
+L.map(function(m,i){return '<tr><td class="n">'+(i+1)+'</td><td>'+esc(m.n)+'</td><td>'+esc(m.r)+'</td><td>'+esc(m.j||"-")+'</td>'+(h?'<td>'+esc(m.hp||"-")+'</td>':'')+'<td>'+esc(m.b)+'</td><td>'+esc(m.s)+'</td></tr>'}).join("")+'</tbody></table>'+
+'<div class="ttd"><div>Mengetahui,<br>Ketua PKB Klasis<div class="sp"></div>(................................)</div><div>Kendari, '+tgl+'<br>Sekretaris<div class="sp"></div>(................................)</div></div>'+
+'</div><script>window.onload=function(){setTimeout(function(){window.print()},400)}<\/script></body></html>';
+var w=window.open("","_blank");if(!w){alert("Pop-up diblokir. Izinkan pop-up untuk situs ini, lalu klik PDF lagi.");return}
+w.document.open();w.document.write(html);w.document.close()};
+/* ===== Tombol mode gelap/terang ===== */
+function curTheme(){var t=document.documentElement.getAttribute("data-theme");if(t)return t;return window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
+function thmIcon(){var d=curTheme()=="dark";$("thm").textContent=d?"☀️":"🌙";$("thm").title=d?"Ganti ke mode terang":"Ganti ke mode gelap"}
+$("thm").onclick=function(){var n=curTheme()=="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("pkb-theme",n)}catch(e){}thmIcon()};
+thmIcon();
+lockForm();tb();
 var GD=[["🙏","Ibadah Bulanan","Contoh"],["🏕️","Retret Kaum Bapak","Contoh"],["🎁","Aksi Diakonia","Contoh"],["🌾","Pelatihan Usaha Tani","Contoh"]];
 function gr(){var h="";if(gal&&gal.length){h=gal.map(function(g){return '<div class="gi" data-u="'+esc(g.u)+'"><img src="'+esc(g.u)+'" alt="'+esc(g.c)+'" loading="lazy"><div class="c"><b>'+esc(g.c)+'</b><small>'+esc(g.d||"")+(canW?' · <span class="x" data-g="'+esc(g.id)+'">hapus</span>':'')+'</small></div></div>'}).join("")}else{h=GD.map(function(g){return '<div class="gi"><div class="ph2">'+g[0]+'</div><div class="c"><b>'+g[1]+'</b><small>'+g[2]+' · foto asli diunggah pengurus</small></div></div>'}).join("")}$("gl").innerHTML=h}
 gr();
@@ -227,24 +306,62 @@ db.collection("posts").orderBy("t","desc").limit(30).onSnapshot(function(s){post
 $("gu").onclick=function(){var f=$("gf").files[0];if(!f||!canW)return;$("ok3").textContent="Memproses...";$("ok3").style.display="inline";comp(f,function(u){var t=Date.now();db.doc("gallery/g"+t).set({u:u,c:$("gc").value.trim()||"Kegiatan PKB",d:$("gd").value.trim(),t:t}).then(function(){$("ok3").textContent="Foto ditambahkan.";$("gf").value="";$("gc").value="";$("gd").value=""}).catch(function(){$("ok3").textContent="Gagal: akun bukan pengurus."})})};
 function login(){auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){if(e.code!="auth/popup-closed-by-user")alert("Login gagal: "+e.code)})}
 function acct(u,role){var a=$("acct");if(!u){a.innerHTML='<button class="lgb" id="lg">Masuk</button>';$("lg").onclick=login;return}
-var n=u.displayName||u.email||"?";a.innerHTML='<button class="av" id="avb" aria-label="Akun">'+(u.photoURL?'<img src="'+esc(u.photoURL)+'" alt="" referrerpolicy="no-referrer">':esc(n.charAt(0).toUpperCase()))+'</button><div class="dd" id="dd"><b>'+esc(u.displayName||"Pengguna")+'</b><small>'+esc(u.email||"")+'</small><span>'+(role||"Memeriksa...")+'</span><button id="lo">Keluar</button></div>';
+var n=u.displayName||u.email||"?";a.innerHTML='<button class="av" id="avb" aria-label="Akun">'+(u.photoURL?'<img src="'+esc(u.photoURL)+'" alt="" referrerpolicy="no-referrer">':esc(n.charAt(0).toUpperCase()))+'</button><div class="dd" id="dd"><b>'+esc(u.displayName||"Pengguna")+'</b><small>'+esc(u.email||"")+'</small><span>'+(role||"Memeriksa...")+'</span><small class="sess" id="sesi"></small><button id="lo">Keluar</button></div>';
 $("avb").onclick=function(e){e.stopPropagation();$("dd").classList.toggle("on")};$("lo").onclick=function(){auth.signOut()}}
 document.addEventListener("click",function(e){var d=$("dd");if(d&&!d.contains(e.target))d.classList.remove("on")});
 auth.onAuthStateChanged(function(u){
 if(unsubM){unsubM();unsubM=null}if(unsubA){unsubA();unsubA=null}$("ad").style.display="none";
-canW=false;live=null;$("up").style.display="none";$("pe").style.display="none";acct(u);
-if(!u){bar('Belum masuk. Data di bawah adalah contoh. Klik <b>Masuk</b> di pojok kanan atas.');tb();gr();return}
+canW=false;live=null;$("up").style.display="none";$("pe").style.display="none";lockForm();acct(u);
+if(!u){sesiEnd=0;bar(sesiHabis?'⏱️ Sesi Anda sudah berakhir (batas 2 jam). Silakan klik <b>Masuk</b> lagi.':'Belum masuk. Data di bawah adalah contoh. Klik <b>Masuk</b> di pojok kanan atas.');sesiHabis=false;tb();gr();return}
+mulaiSesi(u);
 bar("Memeriksa akses untuk "+esc(u.email||"")+"...");
 db.doc("admins/"+(u.email||"").toLowerCase()).get().then(function(d){
+if(auth.currentUser!==u)return;
 if(!d.exists)throw 0;
 var ad=(d.data().peran||"")=="admin";canW=true;
 bar(ad?"Masuk sebagai admin: Anda bisa mengelola konten dan daftar pengurus.":"Masuk sebagai pengurus: Anda bisa mengelola berita, galeri, dan data anggota.");
-acct(u,ad?"Admin":"Pengurus");$("up").style.display="block";$("pe").style.display="block";
+acct(u,ad?"Admin":"Pengurus");lockForm();cekSesi();$("up").style.display="block";$("pe").style.display="block";
 if(ad){$("ad").style.display="block";startAdm(u)}
 unsubM=db.collection("members").onSnapshot(function(s){live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});tb();gr()},function(){live=null;tb();gr()});
 tb();gr()
-}).catch(function(){canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");tb();gr()})
+}).catch(function(){if(auth.currentUser!==u)return;canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");lockForm();cekSesi();tb();gr()})
 })}
+/* ===== Batas sesi login 2 jam ===== */
+var SESI=2*60*60*1000,sesiEnd=0,sesiHabis=false;
+function mulaiSesi(u){sesiEnd=0;u.getIdTokenResult().then(function(r){sesiEnd=Date.parse(r.authTime)+SESI;cekSesi()}).catch(function(){var t=Date.parse(u.metadata&&u.metadata.lastSignInTime);if(t){sesiEnd=t+SESI;cekSesi()}})}
+function cekSesi(){if(!auth||!auth.currentUser||!sesiEnd)return;var sisa=sesiEnd-Date.now(),el=$("sesi");
+if(sisa<=0){sesiEnd=0;sesiHabis=true;auth.signOut();return}
+if(el){var m=Math.ceil(sisa/60000);el.textContent="⏱️ Keluar otomatis dalam "+(m>=60?Math.floor(m/60)+" jam "+(m%60)+" menit":m+" menit")}}
+setInterval(cekSesi,20000);
+document.addEventListener("visibilitychange",function(){if(!document.hidden)cekSesi()});
+window.addEventListener("focus",cekSesi);
+/* ===== Efek suara (Web Audio, tanpa file tambahan) ===== */
+var SFX=(function(){
+var ctx=null,on=true;
+try{on=localStorage.getItem("pkb-sfx")!=="off"}catch(e){}
+function ac(){if(!ctx){var C=window.AudioContext||window.webkitAudioContext;if(!C)return null;ctx=new C()}if(ctx.state=="suspended")ctx.resume();return ctx}
+function tone(f,start,dur,type,vol){var c=ac();if(!c)return;var t=c.currentTime+start,o=c.createOscillator(),g=c.createGain();o.type=type||"sine";o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(vol||0.18,t+0.01);g.gain.exponentialRampToValueAtTime(0.0001,t+dur);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+dur+0.02)}
+/* nada berbeda untuk tiap ikon, berdasarkan urutan pada halaman */
+var scale=[523.25,587.33,659.25,783.99,880,1046.5];
+return{
+on:function(){return on},
+set:function(v){on=v;try{localStorage.setItem("pkb-sfx",v?"on":"off")}catch(e){}},
+tap:function(){if(!on)return;tone(620,0,0.07,"triangle",0.12)},
+chime:function(i){if(!on)return;var b=scale[(i||0)%scale.length];tone(b,0,0.35,"sine",0.2);tone(b*1.5,0.08,0.45,"sine",0.12)},
+ok:function(){if(!on)return;tone(659.25,0,0.15,"sine",0.16);tone(987.77,0.1,0.3,"sine",0.16)},
+close:function(){if(!on)return;tone(440,0,0.12,"triangle",0.1);tone(330,0.06,0.15,"triangle",0.08)}
+}})();
+function sndIcon(){var b=$("snd");b.textContent=SFX.on()?"🔊":"🔇";b.setAttribute("aria-label",SFX.on()?"Suara aktif":"Suara mati")}
+sndIcon();
+$("snd").onclick=function(){SFX.set(!SFX.on());sndIcon();SFX.ok()};
+document.addEventListener("click",function(e){
+var t=e.target;if(!t.closest||t.closest("#snd"))return;
+var ic=t.closest(".ic,.logo i,.ph2");
+if(ic){var all=Array.prototype.slice.call(document.querySelectorAll(".ic,.ph2"));SFX.chime(all.indexOf(ic));ic.classList.remove("pop");void ic.offsetWidth;ic.classList.add("pop");return}
+if(t.closest("#rdx")||t.id=="rd"||t.closest("#lb")||t.closest(".x:not(.ed)")){SFX.close();return}
+if(t.closest("#pf,#gu,#add,#sd,#aa")){SFX.ok();return}
+if(t.closest("a,button,.gi,.card,select,input[type=file]"))SFX.tap();
+},true);
 initFb();
 window.addEventListener("hashchange",route);route();
 </script>
