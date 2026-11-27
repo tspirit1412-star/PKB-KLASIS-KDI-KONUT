@@ -100,6 +100,13 @@ a.card.stat{display:block;color:inherit}.stat .ss{display:block;font-size:12px;c
 .ev{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.35}.ev b{flex:none;width:32px;height:32px;border-radius:8px;color:#fff;display:grid;place-items:center;font-size:14px}.ev small{display:block;color:var(--muted);font-size:12px;margin-top:2px}.ev.tunda span{text-decoration:line-through;color:var(--muted)}
 .kosong{margin:4px 0 0;color:var(--muted);font-size:13px}
 .card.up{display:flex;gap:14px;align-items:flex-start}.card.up>b{flex:none;background:linear-gradient(135deg,var(--navy2),var(--em));color:#fff;border-radius:12px;padding:10px 8px;min-width:64px;text-align:center;font-size:16px}.card.up h3{margin:0 0 2px}.card.up small{color:var(--em2);font-weight:600}
+.fl{display:block;font-size:12px;color:var(--muted);margin:-4px 0 4px}
+.bdg{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}.bdg.bm{background:rgba(16,185,129,.15);color:var(--em2)}.bdg.bk{background:rgba(59,130,246,.15);color:#3b82f6}
+.fchip{display:inline-block;margin:2px 4px 2px 0;padding:3px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:500 12px Inter,sans-serif;cursor:pointer;white-space:nowrap}.fchip:hover,.fchip.on{border-color:var(--em);color:var(--em2)}
+.sk{display:block;color:var(--muted);font-size:12px}td.n{color:var(--muted)}
+.prog{display:none;height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:0 0 12px}.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--navy2),var(--em));transition:width .3s}
+.svin{max-width:980px}.svm{color:var(--muted);font-size:14px;margin:0 0 6px!important}.svt{margin:8px 0}.sva{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0}.sva .btn{padding:9px 16px;font-size:14px}
+.svf{width:100%;height:75vh;border:1px solid var(--line);border-radius:10px;background:#fff}
 .mgrid{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 320px}@media(max-width:900px){.mgrid{grid-template-columns:1fr}}
 .tbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn-s{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 16px;font-size:14px}.btn-s:hover{border-color:var(--em);color:var(--em2)}
@@ -160,6 +167,7 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <div class="gal" id="pl"></div></div>
 </section>
 <div class="rd" id="rd"><div class="in" id="rdc"></div></div>
+<div class="rd" id="sv"><div class="in svin" id="svc"></div></div>
 
 <section class="page" id="p-galeri">
 <div class="ph"><div class="wrap"><h1>Galeri Kegiatan</h1><p>Dokumentasi foto pelayanan PKB.</p></div></div>
@@ -174,7 +182,7 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <div class="wrap sec">
 <div class="note" id="auth">Memeriksa status masuk...</div>
 <div id="rk" style="display:none">
-<div class="tabs" id="tabs"><button data-tab="anggota" class="on">👥 Anggota</button><button data-tab="jemaat">⛪ Jemaat Gereja</button><button data-tab="kalender">📅 Kalender Kegiatan</button><button data-tab="program">📋 Program Rutin</button><button data-tab="pengurus" id="tabadm" style="display:none">🔑 Kelola Pengurus</button><a href="#berita">📰 Tulis Berita ↗</a><a href="#galeri">🖼️ Unggah Foto ↗</a></div>
+<div class="tabs" id="tabs"><button data-tab="anggota" class="on">👥 Anggota</button><button data-tab="surat">✉️ Arsip Surat</button><button data-tab="jemaat">⛪ Jemaat Gereja</button><button data-tab="kalender">📅 Kalender Kegiatan</button><button data-tab="program">📋 Program Rutin</button><button data-tab="pengurus" id="tabadm" style="display:none">🔑 Kelola Pengurus</button><a href="#berita">📰 Tulis Berita ↗</a><a href="#galeri">🖼️ Unggah Foto ↗</a></div>
 <div class="tp on" data-p="anggota">
 <div class="mgrid">
 <div style="min-width:0"><div class="tbar"><input id="q" placeholder="Cari nama, jemaat gereja, atau No. HP..." style="margin:0;flex:1;min-width:200px"><div id="exp" style="display:none;gap:8px"><label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:4px;white-space:nowrap"><input type="checkbox" id="xhp" checked style="width:auto;margin:0"> sertakan No. HP</label><button class="btn btn-s" id="xx">⬇ Excel</button><button class="btn btn-s" id="xp">⬇ PDF</button></div></div>
@@ -188,6 +196,25 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <p class="ok" id="ok1"></p></div>
 </div>
 </div>
+<div class="tp" data-p="surat"><div class="mgrid">
+<div style="min-width:0">
+<div class="tbar"><div class="seg" id="srflt" style="flex:none"><button data-f="semua" class="on">Semua</button><button data-f="masuk">📥 Masuk</button><button data-f="keluar">📤 Keluar</button></div><select id="sry" style="margin:0;width:auto;flex:none"></select><input id="srq" placeholder="Cari nomor, pengirim/tujuan, perihal..." style="margin:0;flex:1;min-width:180px"><button class="btn btn-s" id="srxl">⬇ Buku Agenda (Excel)</button></div>
+<small id="src2" style="color:var(--muted);display:block;margin:8px 0"></small>
+<div class="tw"><table style="min-width:860px"><thead><tr><th>No</th><th>Jenis</th><th>Nomor Surat</th><th>Tanggal</th><th>Dari / Kepada</th><th style="min-width:200px">Perihal</th><th>File</th><th></th></tr></thead><tbody id="srl"></tbody></table></div></div>
+<div class="card" id="srf"><h3 id="srft">Unggah Surat</h3>
+<div class="seg" id="srj" style="margin-bottom:12px"><button data-j="masuk" class="on">📥 Surat Masuk</button><button data-j="keluar">📤 Surat Keluar</button></div>
+<input id="srn" placeholder="Nomor surat, mis. 012/PKB-KKU/XI/2026">
+<label class="fl">Tanggal surat</label><input id="srt" type="date">
+<label class="fl" id="srtl">Tanggal diterima</label><input id="srt2" type="date">
+<input id="srp" placeholder="Dari (pengirim surat)"><input id="srh" placeholder="Perihal">
+<textarea id="srk" rows="2" placeholder="Keterangan / disposisi (opsional)"></textarea>
+<label class="fl">File surat: PDF, foto, atau Word (maks. 10 MB per file, bisa lebih dari satu)</label>
+<input type="file" id="srx" multiple accept=".pdf,image/*,.doc,.docx,application/pdf">
+<small id="srxi" style="display:block;color:var(--muted);margin:-6px 0 10px"></small>
+<div class="prog" id="srpg"><i></i></div>
+<button class="btn btn-p" id="srs">⬆ Unggah &amp; Simpan</button> <button class="btn btn-s" id="srcx" style="display:none">Batal ubah</button>
+<p class="smsg" id="srm"></p></div>
+</div></div>
 <div class="tp" data-p="jemaat"><div id="jc"></div></div>
 <div class="tp" data-p="kalender"><div id="kc"></div></div>
 <div class="tp" data-p="program"><div id="pc"></div></div>
@@ -450,7 +477,7 @@ var n=u.displayName||u.email||"?";a.innerHTML='<button class="av" id="avb" aria-
 $("avb").onclick=function(e){e.stopPropagation();$("stp").classList.remove("on");$("dd").classList.toggle("on")};$("lo").onclick=function(){auth.signOut()}}
 document.addEventListener("click",function(e){var d=$("dd");if(d&&!d.contains(e.target))d.classList.remove("on")});
 auth.onAuthStateChanged(function(u){
-if(unsubM){unsubM();unsubM=null}if(unsubA){unsubA();unsubA=null}$("tabadm").style.display="none";if(curTab=="pengurus")tab("anggota");
+if(unsubM){unsubM();unsubM=null}srStop();if(unsubA){unsubA();unsubA=null}$("tabadm").style.display="none";if(curTab=="pengurus")tab("anggota");
 canW=false;live=null;$("up").style.display="none";$("pe").style.display="none";lockForm();acct(u);
 if(!u){sesiEnd=0;bar(sesiHabis?'⏱️ Sesi Anda sudah berakhir (batas 2 jam). Silakan klik <b>Masuk</b> lagi.':'🔒 Ruang Kerja khusus pengurus dan admin. Klik <b>Masuk</b> di pojok kanan atas dengan akun Google yang terdaftar.');sesiHabis=false;tb();gr();return}
 mulaiSesi(u);
@@ -462,6 +489,7 @@ var ad=(d.data().peran||"")=="admin";canW=true;
 bar(ad?"Masuk sebagai admin: Anda bisa mengelola konten dan daftar pengurus.":"Masuk sebagai pengurus: Anda bisa mengelola berita, galeri, dan data anggota.");
 acct(u,ad?"Admin":"Pengurus");lockForm();cekSesi();$("up").style.display="block";$("pe").style.display="block";
 if(ad){$("tabadm").style.display="";startAdm(u)}
+srStart();
 unsubM=db.collection("members").onSnapshot(function(s){live=s.docs.map(function(d){var x=d.data();x.id=d.id;return x}).sort(function(a,b){return (b.t||0)-(a.t||0)});tb();gr()},function(){live=null;tb();gr()});
 tb();gr()
 }).catch(function(){if(auth.currentUser!==u)return;canW=false;live=null;bar("Akun "+esc(u.email||"")+" bukan pengurus, jadi data anggota tidak ditampilkan.");acct(u,"Pembaca");lockForm();cekSesi();tb();gr()})
@@ -500,6 +528,80 @@ if(t.closest("#pf,#gu,#add,#sd,#aa")){SFX.ok();return}
 if(t.matches&&t.matches("input:not([type=file]):not([type=checkbox]),textarea,select"))return;
 if(t.closest("a,button,.gi,.card,input[type=file]"))SFX.tap();
 },true);
+/* ===== Arsip Surat Masuk & Keluar ===== */
+var SR=[],srEdit=null,srJ="masuk",srF="semua",unsubS=null,srCache={},CH=900000,SMAX=10*1024*1024;
+function fsize(n){return n>=1048576?(n/1048576).toFixed(1)+" MB":Math.max(1,Math.round(n/1024))+" KB"}
+function tglFmt(s){return s?tglD(s).toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"}):"-"}
+function fIcon(t){return /pdf/.test(t)?"📕":/^image/.test(t)?"🖼️":/word|officedocument/.test(t)?"📘":"📄"}
+function srStart(){if(unsubS||!db)return;unsubS=db.collection("surat").orderBy("t","desc").onSnapshot(function(s){SR=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});srDraw()},function(){$("srl").innerHTML='<tr><td colspan="8" style="color:#ef4444">Gagal memuat arsip surat. Pastikan aturan Firebase terbaru sudah dipasang.</td></tr>'})}
+function srStop(){if(unsubS){unsubS();unsubS=null}SR=[];srCache={};srForm(null);srDraw()}
+function srList(){var q=$("srq").value.toLowerCase().trim(),y=$("sry").value;
+return SR.filter(function(s){return (srF=="semua"||s.jenis==srF)&&(!y||String(s.tgl||"").slice(0,4)==y)&&[s.no,s.pihak,s.perihal,s.ket].join(" ").toLowerCase().indexOf(q)>-1}).sort(function(a,b){return String(b.tgl||"").localeCompare(String(a.tgl||""))||(b.t||0)-(a.t||0)})}
+function srDraw(){var ys={},cur=$("sry").value;SR.forEach(function(s){if(s.tgl)ys[String(s.tgl).slice(0,4)]=1});
+$("sry").innerHTML='<option value="">Semua tahun</option>'+Object.keys(ys).sort().reverse().map(function(y){return '<option'+(y==cur?' selected':'')+'>'+y+'</option>'}).join("");
+var L=srList(),mi=SR.filter(function(s){return s.jenis=="masuk"}).length;
+$("src2").textContent=L.length+" surat ditampilkan · total "+mi+" masuk, "+(SR.length-mi)+" keluar";
+$("srl").innerHTML=L.length?L.map(function(s,i){var fs=s.files||[];return '<tr'+(srEdit==s.id?' class="editing"':'')+'><td class="n">'+(i+1)+'</td><td><span class="bdg '+(s.jenis=="masuk"?"bm":"bk")+'">'+(s.jenis=="masuk"?"📥 Masuk":"📤 Keluar")+'</span></td><td><b>'+esc(s.no||"-")+'</b></td><td style="white-space:nowrap">'+tglFmt(s.tgl)+'</td><td>'+esc(s.pihak||"-")+'</td><td>'+esc(s.perihal||"")+(s.ket?'<small class="sk">'+esc(s.ket)+'</small>':'')+'</td><td>'+fs.map(function(f,k){return '<button class="fchip" data-sv="'+esc(s.id)+'" data-fi="'+k+'" title="'+esc(f.name)+' ('+fsize(f.size)+')">'+fIcon(f.type)+' '+esc(f.name.length>18?f.name.slice(0,15)+"…":f.name)+'</button>'}).join("")+'</td><td class="act"><button class="x ed" data-se="'+esc(s.id)+'">✎ ubah</button> <button class="x" data-sd="'+esc(s.id)+'" title="Hapus">✕</button></td></tr>'}).join(""):'<tr><td colspan="8" style="color:var(--muted);padding:16px">'+(SR.length?"Tidak ada surat yang cocok.":"Belum ada surat. Unggah surat pertama melalui form di samping.")+'</td></tr>'}
+$("srq").oninput=srDraw;$("sry").onchange=srDraw;
+$("srflt").onclick=function(e){var b=e.target.closest("[data-f]");if(!b)return;srF=b.dataset.f;this.querySelectorAll("[data-f]").forEach(function(x){x.classList.toggle("on",x==b)});srDraw()};
+function srJenis(j){srJ=j;$("srj").querySelectorAll("[data-j]").forEach(function(b){b.classList.toggle("on",b.dataset.j==j)});$("srp").placeholder=j=="masuk"?"Dari (pengirim surat)":"Kepada (tujuan surat)";$("srtl").textContent=j=="masuk"?"Tanggal diterima":"Tanggal dikirim"}
+$("srj").onclick=function(e){var b=e.target.closest("[data-j]");if(b)srJenis(b.dataset.j)};
+function srForm(s){srEdit=s?s.id:null;srJenis(s?s.jenis:"masuk");$("srn").value=s?s.no||"":"";$("srt").value=s?s.tgl||"":"";$("srt2").value=s?s.tgl2||"":"";$("srp").value=s?s.pihak||"":"";$("srh").value=s?s.perihal||"":"";$("srk").value=s?s.ket||"":"";$("srx").value="";$("srxi").textContent=s?"File lama tetap dipakai. Pilih file baru hanya jika ingin menggantinya.":"";
+$("srft").textContent=s?"Ubah Data Surat":"Unggah Surat";$("srs").textContent=s?"💾 Simpan Perubahan":"⬆ Unggah & Simpan";$("srcx").style.display=s?"inline-block":"none";$("srpg").style.display="none"}
+$("srcx").onclick=function(){srForm(null);$("srm").textContent="";srDraw()};
+$("srx").onchange=function(){var fs=Array.prototype.slice.call(this.files),big=fs.filter(function(f){return f.size>SMAX&&!/^image/.test(f.type)});
+$("srxi").textContent=fs.length?fs.length+" file dipilih ("+fsize(fs.reduce(function(a,f){return a+f.size},0))+")"+(big.length?" ⚠️ "+big.map(function(f){return f.name}).join(", ")+" lebih dari 10 MB":""):""};
+function readB64(f){return new Promise(function(ok,no){var r=new FileReader();r.onload=function(){ok(String(r.result).split(",")[1]||"")};r.onerror=no;r.readAsDataURL(f)})}
+function prepFile(f){if(!/^image\/(jpe?g|png|webp|bmp)/.test(f.type))return readB64(f).then(function(b){return {name:f.name,type:f.type||"application/octet-stream",size:f.size,b:b}});
+return new Promise(function(ok){var u=URL.createObjectURL(f),im=new Image();im.onload=function(){var s=Math.min(1,2000/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);var g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
+var d=c.toDataURL("image/jpeg",0.82),b=d.split(",")[1],sz=Math.round(b.length*3/4);if(sz>=f.size)readB64(f).then(function(b0){ok({name:f.name,type:f.type,size:f.size,b:b0})});else ok({name:f.name.replace(/\.\w+$/,"")+".jpg",type:"image/jpeg",size:sz,b:b})};im.onerror=function(){readB64(f).then(function(b){ok({name:f.name,type:f.type,size:f.size,b:b})})};im.src=u})}
+async function srUpload(id,files,bar){var stamp=Date.now(),P=[];for(var i=0;i<files.length;i++)P.push(await prepFile(files[i]));
+var tot=P.reduce(function(a,p){return a+Math.max(1,Math.ceil(p.b.length/CH))},0),done=0,meta=[];
+for(var i=0;i<P.length;i++){var p=P[i],n=Math.max(1,Math.ceil(p.b.length/CH)),k=id+"_"+stamp+"_"+i;
+for(var c=0;c<n;c++){await db.doc("suratFile/"+k+"_"+c).set({d:p.b.slice(c*CH,(c+1)*CH)});done++;bar(done/tot)}
+meta.push({name:p.name,type:p.type,size:p.size,n:n,k:k})}return meta}
+function srDelFiles(fs){return Promise.all((fs||[]).reduce(function(a,f){for(var c=0;c<f.n;c++)a.push(db.doc("suratFile/"+f.k+"_"+c).delete().catch(function(){}));return a},[]))}
+$("srs").onclick=async function(){var m=$("srm"),btn=this;if(!canW||!db){m.textContent="Hanya pengurus/admin yang bisa mengunggah.";return}
+var fs=Array.prototype.slice.call($("srx").files),o={jenis:srJ,no:$("srn").value.trim(),tgl:$("srt").value,tgl2:$("srt2").value,pihak:$("srp").value.trim(),perihal:$("srh").value.trim(),ket:$("srk").value.trim()};
+if(!o.perihal){m.textContent="⚠️ Perihal surat wajib diisi.";$("srh").focus();return}
+if(!o.tgl){m.textContent="⚠️ Tanggal surat wajib diisi.";$("srt").focus();return}
+if(!srEdit&&!fs.length){m.textContent="⚠️ Pilih file surat (PDF, foto, atau Word).";return}
+var big=fs.filter(function(f){return f.size>SMAX&&!/^image/.test(f.type)});if(big.length){m.textContent="⚠️ File "+big[0].name+" lebih dari 10 MB. Perkecil (kompres) dulu file PDF-nya.";return}
+if(fs.length>10){m.textContent="⚠️ Maksimal 10 file per surat.";return}
+var id=srEdit||"s"+Date.now(),old=srEdit?SR.filter(function(s){return s.id==srEdit})[0]:null,pg=$("srpg");
+btn.disabled=true;pg.style.display="block";pg.firstChild.style.width="0%";m.textContent=fs.length?"Mengunggah file...":"Menyimpan...";
+try{if(fs.length)o.files=await srUpload(id,fs,function(r){pg.firstChild.style.width=Math.round(r*100)+"%";m.textContent="Mengunggah file... "+Math.round(r*100)+"%"});
+o.u=Date.now();o.by=(auth&&auth.currentUser&&auth.currentUser.email)||"";
+if(old){await db.doc("surat/"+id).update(o);if(o.files)srDelFiles(old.files)}else{o.t=o.u;await db.doc("surat/"+id).set(o)}
+m.textContent=old?"✓ Perubahan surat tersimpan.":"✓ Surat berhasil diunggah dan masuk ke daftar.";srForm(null);srDraw()}
+catch(e){m.textContent="Gagal menyimpan: koneksi terputus, tidak punya izin, atau sesi berakhir. Coba lagi."}
+btn.disabled=false;pg.style.display="none"};
+$("srl").onclick=function(e){var t=e.target.closest("button");if(!t)return;var d=t.dataset;
+if(d.sv){srOpen(d.sv,+d.fi);return}
+if(d.se){var s=SR.filter(function(x){return x.id==d.se})[0];if(s){srForm(s);$("srm").textContent="";srDraw();$("srf").scrollIntoView({behavior:"smooth",block:"center"})}return}
+if(d.sd){var s2=SR.filter(function(x){return x.id==d.sd})[0];if(!s2||!confirm('Hapus surat "'+(s2.perihal||s2.no)+'" beserta filenya? Tindakan ini tidak bisa dibatalkan.'))return;
+if(srEdit==s2.id)srForm(null);db.doc("surat/"+s2.id).delete().then(function(){return srDelFiles(s2.files)}).catch(function(){alert("Gagal menghapus surat.")})}};
+async function srOpen(id,fi){var s=SR.filter(function(x){return x.id==id})[0];if(!s||!s.files||!s.files[fi])return;var f=s.files[fi],box=$("svc");
+var head='<button class="rdx" id="svx">&times;</button><span class="bdg '+(s.jenis=="masuk"?"bm":"bk")+'">'+(s.jenis=="masuk"?"📥 Surat Masuk":"📤 Surat Keluar")+'</span><h2 style="margin:8px 0 2px">'+esc(s.perihal)+'</h2><p class="svm">'+(s.no?'No. '+esc(s.no)+' · ':'')+tglFmt(s.tgl)+(s.pihak?' · '+(s.jenis=="masuk"?"Dari ":"Kepada ")+esc(s.pihak):'')+(s.tgl2?' · '+(s.jenis=="masuk"?"Diterima ":"Dikirim ")+tglFmt(s.tgl2):'')+'</p>'+(s.ket?'<p class="svm">📝 '+esc(s.ket)+'</p>':'')+
+(s.files.length>1?'<div class="svt">'+s.files.map(function(x,k){return '<button class="fchip'+(k==fi?' on':'')+'" data-sv="'+esc(s.id)+'" data-fi="'+k+'">'+fIcon(x.type)+' '+esc(x.name)+'</button>'}).join("")+'</div>':'');
+box.innerHTML=head+'<p style="color:var(--muted)">⏳ Memuat file '+esc(f.name)+' ('+fsize(f.size)+')...</p>';$("sv").classList.add("on");
+try{var url=srCache[f.k];if(!url){var parts=await Promise.all(Array.from({length:f.n},function(_,c){return db.doc("suratFile/"+f.k+"_"+c).get()}));
+var b64=parts.map(function(p){return p.exists?p.data().d:""}).join(""),bin=atob(b64),u8=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);
+url=srCache[f.k]=URL.createObjectURL(new Blob([u8],{type:f.type}))}
+if(!$("sv").classList.contains("on"))return;
+var view=/^image/.test(f.type)?'<img src="'+url+'" alt="'+esc(f.name)+'">':/pdf/.test(f.type)?'<iframe class="svf" src="'+url+'" title="'+esc(f.name)+'"></iframe>':'<div class="note">Pratinjau tidak tersedia untuk jenis file ini. Silakan unduh untuk membukanya.</div>';
+box.innerHTML=head+'<div class="sva"><a class="btn btn-p" href="'+url+'" download="'+esc(f.name)+'">⬇ Unduh</a><a class="btn btn-s" href="'+url+'" target="_blank" rel="noopener">↗ Buka di tab baru</a><small style="color:var(--muted)">'+esc(f.name)+' · '+fsize(f.size)+'</small></div>'+view}
+catch(e){box.innerHTML=head+'<div class="note" style="border-color:#ef4444">Gagal memuat file. Periksa koneksi atau masuk ulang, lalu coba lagi.</div>'}}
+$("sv").onclick=function(e){var t=e.target;if(t.id=="sv"||t.id=="svx"){$("sv").classList.remove("on");return}var b=t.closest("[data-sv]");if(b)srOpen(b.dataset.sv,+b.dataset.fi)};
+document.addEventListener("keydown",function(e){if(e.key=="Escape")$("sv").classList.remove("on")});
+$("srxl").onclick=function(){var L=srList(),btn=this;if(!L.length){alert("Tidak ada surat untuk diekspor.");return}
+function go(){btn.textContent="⬇ Buku Agenda (Excel)";var wb=XLSX.utils.book_new();
+[["masuk","Surat Masuk","Dari","Tgl Diterima"],["keluar","Surat Keluar","Kepada","Tgl Dikirim"]].forEach(function(j){var R=L.filter(function(s){return s.jenis==j[0]}).sort(function(a,b){return String(a.tgl).localeCompare(String(b.tgl))});
+var a=[["BUKU AGENDA "+j[1].toUpperCase()+" — "+ORG.toUpperCase()],["Dicetak: "+fd(Date.now())+" · Jumlah: "+R.length+" surat"],[],["No","Nomor Surat","Tanggal Surat",j[3],j[2],"Perihal","Keterangan / Disposisi","Jumlah File"]].concat(R.map(function(s,i){return [i+1,s.no||"",tglFmt(s.tgl),s.tgl2?tglFmt(s.tgl2):"",s.pihak||"",s.perihal||"",s.ket||"",(s.files||[]).length]}));
+var ws=XLSX.utils.aoa_to_sheet(a);ws["!cols"]=[{wch:5},{wch:26},{wch:14},{wch:14},{wch:28},{wch:40},{wch:36},{wch:10}];ws["!merges"]=[{s:{r:0,c:0},e:{r:0,c:7}},{s:{r:1,c:0},e:{r:1,c:7}}];XLSX.utils.book_append_sheet(wb,ws,j[1])});
+XLSX.writeFile(wb,"Buku-Agenda-Surat-PKB-"+stamp()+".xlsx")}
+if(window.XLSX){go();return}btn.textContent="Menyiapkan...";loadJs("https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js",go,function(){btn.textContent="⬇ Buku Agenda (Excel)";alert("Pustaka Excel gagal dimuat. Periksa koneksi internet lalu coba lagi.")})};
+srDraw();
 /* ===== Pengaturan ⚙️ (tema & suara) ===== */
 function themePref(){try{return localStorage.getItem("pkb-theme")||"auto"}catch(e){return "auto"}}
 function setTheme(t){var r=document.documentElement;if(t=="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",t);try{if(t=="auto")localStorage.removeItem("pkb-theme");else localStorage.setItem("pkb-theme",t)}catch(e){}stgSync()}
