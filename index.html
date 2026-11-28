@@ -218,9 +218,9 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <div class="ph"><div class="wrap"><h1>Kegiatan &amp; Layanan</h1><p>Program rutin dan kalender kegiatan tahunan PKB.</p></div></div>
 <div class="wrap sec">
 <h2>Kegiatan Mendatang</h2><p class="sub">Agenda terdekat PKB.</p><div class="grid" id="kup"></div>
-<h2 style="margin-top:44px">Kalender Kegiatan Tahunan</h2>
+<div id="kalsec" style="display:none"><h2 style="margin-top:44px">Kalender Kegiatan Tahunan</h2>
 <div class="kyr"><button class="btn btn-s" id="kp" aria-label="Tahun sebelumnya">‹</button><b id="kaly"></b><button class="btn btn-s" id="kn" aria-label="Tahun berikutnya">›</button><span class="kl"><i class="d1"></i>Terlaksana <i class="d2"></i>Rencana <i class="d3"></i>Ditunda <i class="d4"></i>Hari ini <em>Minggu</em></span></div>
-<div class="kal" id="kal"></div>
+<div class="kal" id="kal"></div></div>
 <h2 style="margin-top:44px">Program Rutin</h2><p class="sub">Program pelayanan yang dijalankan setiap tahun.</p><div class="grid" id="kg"></div></div>
 </section>
 
@@ -356,7 +356,7 @@ $("q").oninput=tb;
 function setJemaat(v){var s=$("fj");if(v&&!Array.prototype.some.call(s.options,function(o){return o.value==v})){var o=document.createElement("option");o.value=v;o.textContent=v;s.appendChild(o)}s.value=v||""}
 function mform(m){editM=m?m.id:null;$("fn").value=m?m.n||"":"";setJemaat(m?m.j:"");$("fh").value=m?m.hp||"":"";$("fb").value=m?m.b||"":"";$("fs").value=m&&m.s=="Nonaktif"?"Nonaktif":"Aktif";
 $("add").textContent=m?"Simpan Perubahan":"Tambah Anggota";$("mft").textContent=m?"Ubah Data Anggota":"Form Anggota Baru";$("fcx").style.display=m?"inline-block":"none";tb()}
-function lockForm(){var ok=!!(canW&&db);$("mfs").disabled=!ok;$("mlk").style.display=ok?"none":"block";$("exp").style.display=ok?"flex":"none";$("rk").style.display=ok?"block":"none";$("nvk").style.display=ok?"":"none";SHEETS.forEach(function(s){s.show(ok)});if(!ok){$("ok1").style.display="none";if(editM)mform(null)}}
+function lockForm(){var ok=!!(canW&&db);$("mfs").disabled=!ok;$("mlk").style.display=ok?"none":"block";$("exp").style.display=ok?"flex":"none";$("rk").style.display=ok?"block":"none";$("kalsec").style.display=ok?"block":"none";$("nvk").style.display=ok?"":"none";SHEETS.forEach(function(s){s.show(ok)});if(!ok){$("ok1").style.display="none";if(editM)mform(null)}}
 $("fcx").onclick=function(){mform(null);$("ok1").style.display="none"};
 $("tb").onclick=function(e){var t=e.target,d=t.dataset&&t.dataset.d,me=t.dataset&&t.dataset.me;
 if(me){var m=rows().filter(function(x){return x.id==me})[0];if(m){mform(m);$("ok1").style.display="none";$("mf").scrollIntoView({behavior:"smooth",block:"center"});$("fn").focus({preventScroll:true})}return}
