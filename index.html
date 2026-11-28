@@ -156,6 +156,21 @@ main{transition:opacity .22s ease}main.fade{opacity:0}
 .si.pdf{color:#ef4444}.sract{display:flex;gap:6px}.sract .x{font-size:13px;padding:4px 8px;border-radius:8px}.sract .x:hover{background:var(--bg)}.sract .ed{color:var(--em2)}
 .srempty{padding:24px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
 @media(max-width:520px){.srbar{grid-template-columns:1fr 1fr}.srbar .seg{grid-column:1/-1}.srbar .btn-s{justify-self:stretch}.srdt{margin-left:0}}
+.mgrid.srg{grid-template-columns:minmax(0,1fr) 280px}@media(max-width:900px){.mgrid.srg{grid-template-columns:1fr}}
+.srtw{overflow:visible}.srtb{min-width:0;table-layout:fixed;width:100%}
+.srtb th,.srtb td{padding:10px 10px;vertical-align:top;overflow-wrap:anywhere;word-break:normal}.srtb th{font-size:11px}
+.srtb .c1{width:38px}.srtb .c2{width:84px}.srtb .c3{width:27%}.srtb .c5{width:62px}.srtb .c6{width:82px}
+.srtb .srno{display:block;font-size:13px;line-height:1.35}.srtb .srph{display:block;font-weight:600;line-height:1.35}.srtb .sk{display:block;font-size:12px;color:var(--muted);margin-top:2px;line-height:1.35}.srtb .srk2{font-style:italic}
+.srtb .bdg{padding:3px 8px}.srtb .bdg i{font-style:normal}
+.fcol{display:flex;flex-wrap:wrap;gap:4px}.srtb td.fcol{display:table-cell}
+.fic{width:28px;height:28px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--muted);display:inline-grid;place-items:center;cursor:pointer;margin:0 2px 2px 0;padding:0}.fic:hover{border-color:var(--em);color:var(--em2)}.fic .si{margin:0;width:16px;height:16px}
+.act2{white-space:nowrap}.ib{width:28px;height:28px;border:1px solid var(--line);border-radius:8px;background:var(--surface);cursor:pointer;font-size:13px;margin:0 2px 2px 0;padding:0}.ib.ed{color:var(--em2)}.ib.dl2{color:#ef4444}.ib:hover{border-color:currentColor}
+.srempty2{color:var(--muted);text-align:center;padding:22px!important}
+.srg #srf .fl{font-size:11px}
+@media(max-width:600px){.srtb thead,.srtb colgroup{display:none}.srtb,.srtb tbody{display:block;width:100%}
+.srtb tr{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 10px;padding:12px;border-bottom:1px solid var(--line)}.srtb td{display:block;padding:0!important;border:0}
+.srtb td:nth-child(1){display:none}.srtb td:nth-child(2){grid-column:1;grid-row:1}.srtb td:nth-child(3){grid-column:2;grid-row:1}.srtb td:nth-child(6){grid-column:3;grid-row:1}
+.srtb td:nth-child(4){grid-column:1/-1;grid-row:2}.srtb td:nth-child(5){grid-column:1/-1;grid-row:3}.srtb td.srempty2{grid-column:1/-1;display:block}}
 .mgrid{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 320px}@media(max-width:900px){.mgrid{grid-template-columns:1fr}}
 .tbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn-s{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 16px;font-size:14px}.btn-s:hover{border-color:var(--em);color:var(--em2)}
@@ -245,11 +260,11 @@ tr.editing td{background:rgba(16,185,129,.12)}
 <p class="ok" id="ok1"></p></div>
 </div>
 </div>
-<div class="tp" data-p="surat"><div class="mgrid">
+<div class="tp" data-p="surat"><div class="mgrid srg">
 <div style="min-width:0">
 <div class="srbar"><div class="seg" id="srflt"><button data-f="semua" class="on">Semua</button><button data-f="masuk"><b data-i="in"></b>Masuk</button><button data-f="keluar"><b data-i="out"></b>Keluar</button></div><select id="sry"></select><button class="btn btn-s" id="srxl">⬇ Buku Agenda (Excel)</button><input id="srq" placeholder="Cari nomor, pengirim/tujuan, perihal..."></div>
 <small id="src2" style="color:var(--muted);display:block;margin:10px 0"></small>
-<div class="srls" id="srl"></div></div>
+<div class="tw srtw"><table class="srtb"><colgroup><col class="c1"><col class="c2"><col class="c3"><col><col class="c5"><col class="c6"></colgroup><thead><tr><th>No</th><th>Jenis</th><th>Nomor / Tanggal</th><th>Perihal &amp; Dari/Kepada</th><th>File</th><th></th></tr></thead><tbody id="srl"></tbody></table></div></div>
 <div class="card" id="srf"><h3 id="srft">Unggah Surat</h3>
 <div class="seg" id="srj" style="margin-bottom:12px"><button data-j="masuk" class="on"><b data-i="in"></b>Surat Masuk</button><button data-j="keluar"><b data-i="out"></b>Surat Keluar</button></div>
 <input id="srn" placeholder="Nomor surat, mis. 012/PKB-KKU/XI/2026">
@@ -619,7 +634,7 @@ var SR=[],srEdit=null,srJ="masuk",srF="semua",unsubS=null,srCache={},CH=900000,S
 function fsize(n){return n>=1048576?(n/1048576).toFixed(1)+" MB":Math.max(1,Math.round(n/1024))+" KB"}
 function tglFmt(s){return s?tglD(s).toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"}):"-"}
 function fIcon(t){return ico(/^image/.test(t)?"photo":"file","si"+(/pdf/.test(t)?" pdf":""))}
-function srStart(){if(unsubS||!db)return;unsubS=db.collection("surat").orderBy("t","desc").onSnapshot(function(s){SR=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});srDraw()},function(){$("srl").innerHTML='<div class="srempty" style="color:#ef4444">Gagal memuat arsip surat. Pastikan aturan Firebase terbaru sudah dipasang.</div>'})}
+function srStart(){if(unsubS||!db)return;unsubS=db.collection("surat").orderBy("t","desc").onSnapshot(function(s){SR=s.docs.map(function(d){var x=d.data();x.id=d.id;return x});srDraw()},function(){$("srl").innerHTML='<tr><td colspan="6" class="srempty2" style="color:#ef4444">Gagal memuat arsip surat. Pastikan aturan Firebase terbaru sudah dipasang.</td></tr>'})}
 function srStop(){if(unsubS){unsubS();unsubS=null}SR=[];srCache={};srForm(null);srDraw()}
 function srList(){var q=$("srq").value.toLowerCase().trim(),y=$("sry").value;
 return SR.filter(function(s){return (srF=="semua"||s.jenis==srF)&&(!y||String(s.tgl||"").slice(0,4)==y)&&[s.no,s.pihak,s.perihal,s.ket].join(" ").toLowerCase().indexOf(q)>-1}).sort(function(a,b){return String(b.tgl||"").localeCompare(String(a.tgl||""))||(b.t||0)-(a.t||0)})}
@@ -627,12 +642,12 @@ function srDraw(){var ys={},cur=$("sry").value;SR.forEach(function(s){if(s.tgl)y
 $("sry").innerHTML='<option value="">Semua tahun</option>'+Object.keys(ys).sort().reverse().map(function(y){return '<option'+(y==cur?' selected':'')+'>'+y+'</option>'}).join("");
 var L=srList(),mi=SR.filter(function(s){return s.jenis=="masuk"}).length;
 $("src2").textContent=L.length+" surat ditampilkan · total "+mi+" masuk, "+(SR.length-mi)+" keluar";
-$("srl").innerHTML=L.length?L.map(function(s,i){var fs=s.files||[],m=s.jenis=="masuk";return '<div class="sri'+(m?' sm':' sk2')+(srEdit==s.id?' editing':'')+'">'+
-'<div class="srt"><span class="bdg '+(m?"bm":"bk")+'">'+(m?ico("in","si")+"Masuk":ico("out","si")+"Keluar")+'</span><span class="srno">'+esc(s.no||"Tanpa nomor")+'</span><span class="srdt">'+tglFmt(s.tgl)+'</span></div>'+
-'<div class="srph">'+esc(s.perihal||"")+'</div>'+
-'<div class="srmeta">'+(s.pihak?'<span>'+(m?"Dari":"Kepada")+': <b>'+esc(s.pihak)+'</b></span>':'')+(s.tgl2?'<span>'+(m?"Diterima":"Dikirim")+' '+tglFmt(s.tgl2)+'</span>':'')+'</div>'+
-(s.ket?'<div class="srket">'+esc(s.ket)+'</div>':'')+
-'<div class="srft"><div class="srfs">'+fs.map(function(f,k){return '<button class="fchip" data-sv="'+esc(s.id)+'" data-fi="'+k+'" title="'+esc(f.name)+' ('+fsize(f.size)+')">'+fIcon(f.type)+'<span>'+esc(f.name)+'</span><small>'+fsize(f.size)+'</small></button>'}).join("")+'</div><div class="sract"><button class="x ed" data-se="'+esc(s.id)+'">✎ Ubah</button><button class="x" data-sd="'+esc(s.id)+'" title="Hapus">✕ Hapus</button></div></div></div>'}).join(""):'<div class="srempty">'+(SR.length?"Tidak ada surat yang cocok.":"Belum ada surat. Unggah surat pertama melalui form di samping.")+'</div>'}
+$("srl").innerHTML=L.length?L.map(function(s,i){var fs=s.files||[],m=s.jenis=="masuk";return '<tr'+(srEdit==s.id?' class="editing"':'')+'><td class="n">'+(i+1)+'</td>'+
+'<td><span class="bdg '+(m?"bm":"bk")+'" title="Surat '+(m?"masuk":"keluar")+'">'+(m?ico("in","si")+'<i>Masuk</i>':ico("out","si")+'<i>Keluar</i>')+'</span></td>'+
+'<td><b class="srno">'+esc(s.no||"Tanpa nomor")+'</b><small class="sk">'+tglFmt(s.tgl)+'</small></td>'+
+'<td><span class="srph">'+esc(s.perihal||"")+'</span>'+(s.pihak?'<small class="sk">'+(m?"Dari: ":"Kepada: ")+esc(s.pihak)+'</small>':'')+(s.ket?'<small class="sk srk2">'+esc(s.ket)+'</small>':'')+'</td>'+
+'<td class="fcol">'+fs.map(function(f,k){return '<button class="fic" data-sv="'+esc(s.id)+'" data-fi="'+k+'" title="Lihat: '+esc(f.name)+' ('+fsize(f.size)+')" aria-label="Lihat '+esc(f.name)+'">'+fIcon(f.type)+'</button>'}).join("")+'</td>'+
+'<td class="act2"><button class="ib ed" data-se="'+esc(s.id)+'" title="Ubah" aria-label="Ubah">✎</button><button class="ib dl2" data-sd="'+esc(s.id)+'" title="Hapus" aria-label="Hapus">✕</button></td></tr>'}).join(""):'<tr><td colspan="6" class="srempty2">'+(SR.length?"Tidak ada surat yang cocok.":"Belum ada surat. Unggah surat pertama melalui form di samping.")+'</td></tr>'}
 $("srq").oninput=srDraw;$("sry").onchange=srDraw;
 $("srflt").onclick=function(e){var b=e.target.closest("[data-f]");if(!b)return;srF=b.dataset.f;this.querySelectorAll("[data-f]").forEach(function(x){x.classList.toggle("on",x==b)});srDraw()};
 function srJenis(j){srJ=j;$("srj").querySelectorAll("[data-j]").forEach(function(b){b.classList.toggle("on",b.dataset.j==j)});$("srp").placeholder=j=="masuk"?"Dari (pengirim surat)":"Kepada (tujuan surat)";$("srtl").textContent=j=="masuk"?"Tanggal diterima":"Tanggal dikirim"}
