@@ -47,7 +47,7 @@ h2{font-size:28px;margin:0 0 6px;color:var(--navy)}
 .bars .v{width:36px;text-align:right;font-weight:600}
 .cta{background:linear-gradient(135deg,var(--navy2),var(--em2));color:#fff;border-radius:20px;padding:40px;text-align:center}
 .cta h2{color:#fff}
-.page{display:none}.page.on{display:block;animation:fi .4s ease}
+.page{display:none}.page.on{display:block}
 @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
 .ph{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:#fff;padding:46px 0}.ph h1{margin:0;font-size:32px}.ph p{margin:6px 0 0;color:#cbd5e1}
 .tl{border-left:3px solid var(--em);margin-left:8px;padding-left:20px}
@@ -140,6 +140,10 @@ nav a{border:1px solid var(--line);border-radius:14px;padding:10px 12px;gap:12px
 .cd.su.eo,.cd.su.ep,.cd.su.et{box-shadow:inset 0 -3px 0 #ef4444}
 .kl .d4{background:none;box-shadow:inset 0 0 0 2px #f59e0b}.kl em{font-style:normal;color:#ef4444;font-weight:700;margin-left:8px}
 .evl{border-top:1px dashed var(--line);margin-top:2px}
+main{transition:opacity .22s ease}main.fade{opacity:0}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s;animation-timing-function:cubic-bezier(.4,0,.2,1)}
+::view-transition-group(hdr){animation-duration:0s}header{view-transition-name:hdr}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}main{transition:none}::view-transition-old(root),::view-transition-new(root){animation:none}*{animation-duration:.01ms!important}}
 .mgrid{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) 320px}@media(max-width:900px){.mgrid{grid-template-columns:1fr}}
 .tbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn-s{border:1px solid var(--line);background:var(--surface);color:var(--text);padding:10px 16px;font-size:14px}.btn-s:hover{border-color:var(--em);color:var(--em2)}
@@ -303,7 +307,16 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return
 $("sd").onclick=function(){if(!$("mn").value.trim()||!$("mm").value.trim())return;$("mn").value="";$("me").value="";$("mm").value="";$("ok2").style.display="block"};
 $("bg").onclick=function(){$("nv").classList.toggle("open")};
 function count(){document.querySelectorAll("[data-n]").forEach(function(e){var t=+e.dataset.n,s=0,st=t/40;var iv=setInterval(function(){s+=st;if(s>=t){s=t;clearInterval(iv)}e.textContent=Math.round(s)},25)})}
-function route(){var h=(location.hash||"#beranda").slice(1);if(h=="dashboard")h="kerja";var _d=$("dd");if(_d)_d.classList.remove("on");var _s=$("stp");if(_s)_s.classList.remove("on");if(!$("p-"+h))h="beranda";document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id=="p-"+h)});document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")=="#"+h)});$("nv").classList.remove("open");window.scrollTo(0,0);if(h=="beranda"){count();setTimeout(function(){document.querySelectorAll(".f").forEach(function(f){f.style.width=f.dataset.w+"%"})},100)}}
+var curPage=null,RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function showPage(h){document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id=="p-"+h)});document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")=="#"+h)});
+window.scrollTo({top:0,left:0,behavior:"instant"});curPage=h;
+if(h=="beranda"){count();setTimeout(function(){document.querySelectorAll(".f").forEach(function(f){f.style.width=f.dataset.w+"%"})},RM?0:350)}}
+function route(){var h=(location.hash||"#beranda").slice(1);if(h=="dashboard")h="kerja";var _d=$("dd");if(_d)_d.classList.remove("on");var _s=$("stp");if(_s)_s.classList.remove("on");if(!$("p-"+h))h="beranda";$("nv").classList.remove("open");
+if(h==curPage){window.scrollTo({top:0,behavior:RM?"instant":"smooth"});return}
+var first=curPage===null;
+if(first||RM){showPage(h);return}
+if(document.startViewTransition){document.startViewTransition(function(){showPage(h)});return}
+var mn=document.querySelector("main");mn.classList.add("fade");setTimeout(function(){showPage(h);requestAnimationFrame(function(){mn.classList.remove("fade")})},160)}
 var db=null,canW=false,live=null,gal=null,editM=null;
 function pad(n){return (n<10?"0":"")+n}
 function rows(){return live?live:M.map(function(m,i){return {id:"d"+i,n:m[0],j:m[1],hp:m[2],b:m[3],s:m[4]}})}
